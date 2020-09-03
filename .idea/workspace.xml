@@ -164,10 +164,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="693" y="334" width="577" height="385" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1597910362942">
+    <state x="693" y="334" width="717" height="385" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1599121867659">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="693" y="334" width="577" height="385" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1597910362942" />
+    <state x="693" y="334" width="717" height="385" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1599121867659" />
     <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1598237052830">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
