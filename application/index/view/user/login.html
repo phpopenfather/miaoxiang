@@ -1,0 +1,215 @@
+<style>
+    body{
+        background-image: url("/assets/img/login-bg.png");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+    .navbar-mx{
+        background-color: transparent;
+    }
+    .navbar-inverse .navbar-nav>li>a{
+        color: #fff;
+    }
+    .navbar-inverse .navbar-nav>li>a:hover{
+        color: #fff;
+    }
+    .split_line{
+        color: #fff;
+    }
+    .login-section{
+        width: 480px;
+        height: 480px;
+        border-radius: 8px;
+        float: right;
+        border: none;
+        margin-top: 170px;
+    }
+    .container{
+        max-width: 1400px;
+        width: 1400px;
+    }
+    .login-title{
+        color: #3A3C3C;
+        font-size: 24px;
+        text-align: center;
+        margin-top: 30px;
+    }
+    .login-section .login-main{
+        padding: 40px 55px 20px 55px;
+    }
+    .password, .account{
+        font-size: 16px;
+        color: #BEC8CA;
+        padding: 23px 16px;
+        border-radius: 8px;
+        border: 1px solid #BEC8CA;
+    }
+    .form-bottom{
+        margin-bottom: 23px;
+    }
+
+    .controls{
+        font-size: 16px;
+        color: #BEC8CA;
+    }
+    .keeplogin{
+
+    }
+    .btn-forgot{
+        color: #72D6E5;
+        font-size: 16px;
+    }
+    .btn-forgot:hover{
+        color: #72D6E5;
+    }
+    .keeplogin-bottom{
+        margin: 40px 0 10px;
+    }
+    .login-btn{
+        background: #72D6E5;
+        font-size: 18px;
+        color: #fff;
+    }
+    .login-btn:hover{
+        color: #fff;
+    }
+    .last-p{
+        text-align: center;
+        margin-top: 60px;
+    }
+    .last-p a{
+        font-size: 14px;
+        color: #3A3C3C;
+    }
+    .last-p span{
+        color: #BEC8CA;
+        margin: 0 17px;
+        font-size: 13px;
+    }
+    .login-section .n-bootstrap .n-right{
+        top: 16px;
+        right: 96px;
+        left: unset;
+        width: 1%;
+    }
+    .login-sub{
+        float: left;
+        color: #fff;
+        margin-top: 270px;
+    }
+    .text-b{
+        font-size: 68px;
+        margin-bottom: 20px;
+    }
+    .text-s{
+        font-size: 34px;
+    }
+    .error-top .n-right{
+        top: 55px !important;
+        left: 0 !important;
+    }
+    @media screen and (min-width: 1300px) and (max-width: 1400px){
+        .container {
+            width: 1300px;
+            max-width: 1300px;
+        }
+        .login-section{
+            margin-top: 100px;
+        }
+    }
+</style>
+<div id="content-container" class="container container-login">
+    <div class="login-sub">
+        <p class="text-b">装配式</p>
+        <p class="text-s">让装修更环保、更简单、更快捷</p>
+    </div>
+    <div class="user-section login-section">
+        <p class="login-title">账号密码登录</p>
+<!--        <div class="logon-tab clearfix"> <a class="active">{:__('Sign in')}</a> <a href="{:url('user/register')}?url={$url|urlencode}">{:__('Sign up')}</a> </div>-->
+        <div class="login-main"> 
+            <form name="form" id="login-form" class="form-vertical" method="POST" action="">
+                <input type="hidden" name="url" value="{$url}" />
+                {:token()}
+                <div class="form-group form-bottom">
+<!--                    <label class="control-label" for="account">{:__('Account')}</label>-->
+                    <div class="controls">
+                        <input class="form-control account input-lg" id="account" type="text" name="account" value="" data-rule="required" placeholder="{:__('Email/Mobile/Username')}" autocomplete="off">
+                        <div class="help-block"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+<!--                    <label class="control-label" for="password">{:__('Password')}</label>-->
+                    <div class="controls error-top">
+                        <input class="form-control password input-lg" id="password" type="password" name="password" data-rule="required;password" placeholder="{:__('Password')}" autocomplete="off">
+                    </div>
+                </div>
+                <div class="form-group keeplogin-bottom">
+                    <div class="controls">
+                        <input type="checkbox" class="keeplogin" name="keeplogin" checked="checked" value="1"> 5天内自动登录
+                        <div class="pull-right"><a href="javascript:;" class="btn-forgot">忘记密码</a></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn login-btn btn-lg btn-block">{:__('Sign in')}</button>
+                </div>
+                <p class="last-p"><a href="{:url('index/user/codelogin')}">扫码登录</a><span>|</span><a href="{:url('index/user/mblogin')}">手机号登录</a><span>|</span><a href="{:url('user/registermode')}">注册</a></p>
+            </form>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<script type="text/html" id="resetpwdtpl">
+    <form id="resetpwd-form" class="form-horizontal form-layer" method="POST" action="{:url('api/user/resetpwd')}">
+        <div class="form-body">
+            <input type="hidden" name="action" value="resetpwd" />
+            <div class="form-group">
+                <label class="control-label col-xs-12 col-sm-3">{:__('Type')}:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <div class="radio">
+                        <label for="type-email"><input id="type-email" checked="checked" name="type" data-send-url="{:url('api/ems/send')}" data-check-url="{:url('api/validate/check_ems_correct')}" type="radio" value="email"> {:__('Reset password by email')}</label>
+                        <label for="type-mobile"><input id="type-mobile" name="type" type="radio" data-send-url="{:url('api/sms/send')}" data-check-url="{:url('api/validate/check_sms_correct')}" value="mobile"> {:__('Reset password by mobile')}</label>
+                    </div>        
+                </div>
+            </div>
+            <div class="form-group" data-type="email">
+                <label for="email" class="control-label col-xs-12 col-sm-3">{:__('Email')}:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input type="text" class="form-control" id="email" name="email" value="" data-rule="required(#type-email:checked);email;remote({:url('api/validate/check_email_exist')}, event=resetpwd, id={$user.id})" placeholder="">
+                    <span class="msg-box"></span>
+                </div>
+            </div>
+            <div class="form-group hide" data-type="mobile">
+                <label for="mobile" class="control-label col-xs-12 col-sm-3">{:__('Mobile')}:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input type="text" class="form-control" id="mobile" name="mobile" value="" data-rule="required(#type-mobile:checked);mobile;remote({:url('api/validate/check_mobile_exist')}, event=resetpwd, id={$user.id})" placeholder="">
+                    <span class="msg-box"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="captcha" class="control-label col-xs-12 col-sm-3">{:__('Captcha')}:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <div class="input-group">
+                        <input type="text" name="captcha" class="form-control" data-rule="required;length(4);integer[+];remote({:url('api/validate/check_ems_correct')}, event=resetpwd, email:#email)" />
+                        <span class="input-group-btn" style="padding:0;border:none;">
+                            <a href="javascript:;" class="btn btn-info btn-captcha" data-url="{:url('api/ems/send')}" data-type="email" data-event="resetpwd">{:__('Send verification code')}</a>
+                        </span>
+                    </div>
+                    <span class="msg-box"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="newpassword" class="control-label col-xs-12 col-sm-3">{:__('New password')}:</label>
+                <div class="col-xs-12 col-sm-8">
+                    <input type="password" class="form-control" id="newpassword" name="newpassword" value="" data-rule="required;password" placeholder="">
+                    <span class="msg-box"></span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group form-footer">
+            <label class="control-label col-xs-12 col-sm-3"></label>
+            <div class="col-xs-12 col-sm-8">
+                <button type="submit" class="btn btn-md btn-info">{:__('Ok')}</button>
+            </div>
+        </div>
+    </form>
+</script>

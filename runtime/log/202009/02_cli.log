@@ -1,0 +1,25 @@
+[ 2020-09-02T12:28:06+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000220s ]
+[ info ] [ LOG ] INIT File
+[ 2020-09-02T12:28:06+08:00 ][ info ] [ CACHE ] INIT File
+[ 2020-09-02T12:28:06+08:00 ][ info ] [ BEHAVIOR ] Run \addons\epay\Epay @app_init [ RunTime:0.006432s ]
+[ 2020-09-02T12:28:06+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.006961s ]
+[ 2020-09-02T12:30:01+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000213s ]
+[ info ] [ LOG ] INIT File
+[ 2020-09-02T12:30:01+08:00 ][ info ] [ CACHE ] INIT File
+[ 2020-09-02T12:30:01+08:00 ][ info ] [ BEHAVIOR ] Run \addons\epay\Epay @app_init [ RunTime:0.006482s ]
+[ 2020-09-02T12:30:01+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.007009s ]
+[ 2020-09-02T12:30:32+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000199s ]
+[ info ] [ LOG ] INIT File
+[ 2020-09-02T12:30:32+08:00 ][ info ] [ CACHE ] INIT File
+[ 2020-09-02T12:30:32+08:00 ][ info ] [ BEHAVIOR ] Run \addons\epay\Epay @app_init [ RunTime:0.006482s ]
+[ 2020-09-02T12:30:32+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.007004s ]
+[ 2020-09-02T16:23:16+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000224s ]
+[ info ] [ LOG ] INIT File
+[ 2020-09-02T16:23:16+08:00 ][ info ] [ CACHE ] INIT File
+[ 2020-09-02T16:23:16+08:00 ][ info ] [ BEHAVIOR ] Run \addons\epay\Epay @app_init [ RunTime:0.006459s ]
+[ 2020-09-02T16:23:16+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.007005s ]
+[ 2020-09-02T16:27:26+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000207s ]
+[ info ] [ LOG ] INIT File
+[ 2020-09-02T16:27:26+08:00 ][ info ] [ CACHE ] INIT File
+[ 2020-09-02T16:27:26+08:00 ][ info ] [ BEHAVIOR ] Run \addons\epay\Epay @app_init [ RunTime:0.006489s ]
+[ 2020-09-02T16:27:26+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.007014s ]

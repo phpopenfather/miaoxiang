@@ -1,0 +1,198 @@
+<style>
+
+    .detail-div{
+        padding: 40px 22px;
+        background: #fff;
+        border-radius: 40px;
+    }
+    .col-padd{
+        padding: 0;
+        margin-left: 15px;
+    }
+    .img-div{
+        width: 418px;
+        height: 418px;
+        position: relative;
+        display: table-cell;
+        vertical-align: bottom;
+        margin: 0 auto;
+    }
+    .img-div img{
+        background: #ccc;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .text-div{
+        position: relative;
+        padding: 23px 20px 0 50px;
+        height: 418px;
+        margin-left: -15px;
+    }
+    .detail-title{
+        font-size: 22px;
+        margin-bottom: 27px;
+    }
+    .detail-des{
+        color: #8F8E96;
+        font-size: 13px;
+        width: 75%;
+        min-height: 110px;
+    }
+    .detail-intro{
+        color: #8F8E96;
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    .btn-div{
+        position: absolute;
+        bottom: 0;
+        right: 2%;
+    }
+    .detail-btn{
+        color: #fff;
+        font-size: 16px;
+        border-radius: 20px;
+        width: 118px;
+        height: 38px;
+        margin: 0 7px;
+    }
+    .btn-div .detail-btn1{
+        background: #5044FF !important;
+    }
+    .btn-div .detail-btn2{
+        color: #5044FF;
+        border: 1px solid #5044FF;
+        background: none;
+    }
+    .detail-favorite{
+        color: #fff !important;
+        background: #5044FF !important;
+    }
+    .btn-div .detail-btn1:hover{
+        color: #fff;
+    }
+    .btn-div .detail-btn3:hover{
+        color: #fff;
+    }
+
+    .item-list{
+        padding: 0 10px;
+        margin-bottom: 20px;
+    }
+    .item-list>div{
+        background: #fff;
+        width: 100%;
+        height: 100%;
+        border-radius: 35px;
+        overflow: hidden;
+        box-shadow:rgba(0,0,0,.2) 0px 0px 1px;
+        position: relative;
+    }
+    .img-div1{
+        width: 240px;
+        height: 239px;
+        max-width: 240px;
+        max-height: 239px;
+        position: relative;
+        display:table-cell;
+        vertical-align:bottom;
+        margin: 0 auto;
+    }
+
+    .item-list>div a .item-img{
+        background: #ccc;
+        display:block;
+        margin: 0 auto;
+        max-height: 239px;
+    }
+    .ul-list{
+        margin: 7px 0 5px;
+    }
+    .ul-list>li{
+        border: none;
+        padding: 2px 20px 0;
+        color: #8F8E96;
+        font-size: 12px;
+        margin-bottom: 4px
+    }
+    .ul-list:last-child{
+        margin-bottom: 10px !important;
+    }
+    .item-title>a{
+        font-size: 16px;
+    }
+    .item-title a{
+        color: #000;
+    }
+    .similar{
+        font-size: 23px;
+        margin: 35px 0;
+        padding-left: 10px;
+    }
+    .similar-div{
+        width: 1320px;
+        margin-left: -21px;
+    }
+
+    .rmb{
+        color: #000;
+    }
+    .detail-price{
+        color: #000;
+        font-size: 19px;
+    }
+
+</style>
+<div id="content-container" class="container">
+    <div class="row">
+        <div class="col-md-12 breadcrumb-div">
+            <ul class="breadcrumb">
+                <li><a class="breadcrumb-a-xm" href="{:url('component/index')}">我的构件</a></li>
+                <li class="active">构件详情</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row detail-div">
+        <div class="col-md-4 col-padd" style="">
+            <div class="img-div">
+                <img class="img-responsive" src="{$detail->image}">
+            </div>
+        </div>
+        <div class="col-md-8 text-div">
+            <p class="detail-title">{$detail->name}</p>
+            <p class="detail-des">{$detail->description}</p>
+
+            <p class="detail-intro">类别：{$detail->categories->name}</p>
+            <p class="detail-intro">类别：板材饰品</p>
+            <p class="detail-intro">尺寸：{$detail->size}</p>
+            <p class="detail-intro">价格：<span class="rmb">￥</span><span class="detail-price">{$detail->price}</span>（1个）</p>
+            <div class="btn-div">
+                <button type="button" class="btn detail-btn detail-btn1">购买商品</button>
+                <button type="button" id="favorite" idd="{$detail->id}" class="btn detail-btn detail-btn2 {if condition="$detail->favorite gt 0"}detail-favorite{/if}">{if condition="$detail->favorite gt 0"}已收藏{else /}收藏{/if}</button>
+                <button type="button" class="btn detail-btn detail-btn3">去使用</button>
+            </div>
+        </div>
+    </div>
+    <div class="row similar-div">
+        <p class="similar">推荐相似</p>
+        {foreach $result.rows as $vo}
+        <div class="col-lg-1-5 item-list">
+            <div class="item-list-div">
+                <div class="img-div1">
+                    <a href="{:url('component/detail')}?id={$vo.id}">
+                        <img class="item-img img-responsive" src="{$vo.image}">
+                    </a>
+                </div>
+                <ul class="list-group ul-list">
+                    <li class="list-group-item item-title"><a href="{:url('component/detail')}?id={$vo.id}"> {$vo.name} </a></li>
+                    <li class="list-group-item">分类：{$vo.categories.name}</li>
+                    <li class="list-group-item">详细名称：{$vo.description}</li>
+                </ul>
+            </div>
+        </div>
+        {/foreach}
+    </div>
+
+</div>

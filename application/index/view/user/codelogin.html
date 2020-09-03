@@ -1,0 +1,144 @@
+<style>
+    body{
+        background-image: url("/assets/img/login-bg.png");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+    .navbar-mx{
+        background-color: transparent;
+    }
+    .navbar-inverse .navbar-nav>li>a{
+        color: #fff;
+    }
+    .navbar-inverse .navbar-nav>li>a:hover{
+        color: #fff;
+    }
+    .split_line{
+        color: #fff;
+    }
+    .login-section{
+        width: 480px;
+        height: 480px;
+        border-radius: 8px;
+        float: right;
+        border: none;
+        margin-top: 170px;
+    }
+    .container{
+        max-width: 1400px;
+        width: 1400px;
+    }
+    .login-title{
+        color: #3A3C3C;
+        font-size: 24px;
+        text-align: center;
+        margin-top: 30px;
+    }
+    .sub-title{
+        color: #868F91;
+        font-size: 16px;
+        text-align: center;
+    }
+    .login-section .login-main{
+        padding: 28px 55px 20px 55px;
+    }
+
+    .controls{
+        font-size: 16px;
+        color: #BEC8CA;
+    }
+    .keeplogin{
+
+    }
+    .img-div{
+        width: 180px;
+        height: 180px;
+        margin: 0 auto;
+    }
+    .img-div img{
+        width: 100%;
+        height: 100%;
+    }
+    .btn-forgot{
+        color: #72D6E5;
+        font-size: 16px;
+    }
+    .btn-forgot:hover{
+        color: #72D6E5;
+    }
+    .keeplogin-bottom{
+        margin: 37px 0 10px;
+        text-align: center;
+    }
+    .login-btn{
+        background: #72D6E5;
+        font-size: 18px;
+        color: #fff;
+    }
+    .login-btn:hover{
+        color: #fff;
+    }
+    .last-p{
+        text-align: center;
+        margin-top: 35px;
+    }
+    .last-p a{
+        font-size: 14px;
+        color: #3A3C3C;
+    }
+    .last-p span{
+        color: #BEC8CA;
+        margin: 0 17px;
+        font-size: 13px;
+    }
+    .login-sub{
+        float: left;
+        color: #fff;
+        margin-top: 270px;
+    }
+    .text-b{
+        font-size: 68px;
+        margin-bottom: 20px;
+    }
+    .text-s{
+        font-size: 34px;
+    }
+    @media screen and (min-width: 1300px) and (max-width: 1400px){
+        .container {
+            width: 1300px;
+            max-width: 1300px;
+        }
+        .login-section{
+            margin-top: 100px;
+        }
+    }
+</style>
+<div id="content-container" class="container container-login">
+    <div class="login-sub">
+        <p class="text-b">装配式</p>
+        <p class="text-s">让装修更环保、更简单、更快捷</p>
+    </div>
+    <div class="user-section login-section">
+        <p class="login-title">扫码登录</p>
+        <p class="sub-title">支持微信/企业微信扫码登录</p>
+<!--        <div class="logon-tab clearfix"> <a class="active">{:__('Sign in')}</a> <a href="{:url('user/register')}?url={$url|urlencode}">{:__('Sign up')}</a> </div>-->
+        <div class="login-main"> 
+            <form name="form" id="login-form" class="form-vertical" method="POST" action="">
+                <input type="hidden" name="url" value="{$url}" />
+                {:token()}
+                <div class="form-group form-bottom">
+                    <div class="img-div">
+                        <img src="/assets/img/code.png">
+                    </div>
+                </div>
+                <div class="form-group keeplogin-bottom">
+                    <div class="controls">
+                        <input type="checkbox" class="keeplogin" name="keeplogin" checked="checked" value="1"> 5天内自动登录
+                    </div>
+                </div>
+                <p class="last-p"><a href="{:url('index/user/codelogin')}">扫码登录</a><span>|</span><a href="{:url('index/user/mblogin')}">手机号登录</a><span>|</span><a href="{:url('user/registermode')}">注册</a></p>
+            </form>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>

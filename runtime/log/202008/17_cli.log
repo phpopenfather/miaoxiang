@@ -1,0 +1,12 @@
+[ 2020-08-17T13:46:22+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000203s ]
+[ info ] [ LOG ] INIT File
+[ 2020-08-17T13:46:22+08:00 ][ info ] [ CACHE ] INIT File
+[ 2020-08-17T13:46:22+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.003706s ]
+[ 2020-08-17T13:50:58+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000220s ]
+[ info ] [ LOG ] INIT File
+[ 2020-08-17T13:50:58+08:00 ][ info ] [ CACHE ] INIT File
+[ 2020-08-17T13:50:58+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.003965s ]
+[ 2020-08-17T14:04:55+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000191s ]
+[ info ] [ LOG ] INIT File
+[ 2020-08-17T14:04:55+08:00 ][ info ] [ CACHE ] INIT File
+[ 2020-08-17T14:04:55+08:00 ][ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.004101s ]

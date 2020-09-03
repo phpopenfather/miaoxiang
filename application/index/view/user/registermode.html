@@ -1,0 +1,79 @@
+<style>
+    .mode-section{
+        max-width: 900px;
+        height: 560px;
+        background: #fff;
+        margin: 160px auto;
+        padding-left: 105px;
+        padding-right: 105px;
+    }
+    .mode-title{
+        font-size: 24px;
+        color: #3A3C3C;
+        text-align: center;
+        margin: 40px 0;
+    }
+    .mode-body{
+        background: #F9FAFC;
+        float: left;
+        max-width: 340px;
+        width: 340px;
+        height: 390px;
+        margin: 0 10px;
+        padding: 40px;
+    }
+    .body-title{
+        color: #3A3C3C;
+        font-size: 20px;
+    }
+    .span-bg{
+        background: #72D6E5;
+        display: inline-block;
+        width: 18px;
+        height: 4px;
+    }
+    .body-title-bottom{
+        margin-bottom: 2px;
+    }
+    .sub-title{
+        color: #3A3C3C;
+        font-size: 14px;
+        margin-top: 17px;
+    }
+    .join-now{
+        width: 149px;
+        height: 40px;
+        font-size: 18px;
+        color: #fff;
+        background: #72D6E5;
+        border-radius: 4px;
+        margin-top: 142px;
+    }
+    .join-now:hover{
+        color: #fff;
+    }
+    .erweima{
+        margin-top: 40px;
+    }
+</style>
+<div id="content-container" class="container">
+    <div class="mode-section">
+        <div class="row mode-main">
+            <p class="mode-title">选择加入方式</p>
+            <div class="mode-body">
+                <p class="body-title body-title-bottom">申请专属</p>
+                <p class="body-title">大客户专员</p>
+                <span class="span-bg"></span>
+                <p class="sub-title">获得专业/快捷的服务</p>
+                <a href="{:url('user/register')}" class="btn join-now" >立即加入</a>
+            </div>
+            <div class="mode-body">
+                <p class="body-title body-title-bottom">微信绑定</p>
+                <p class="body-title">管理员扫码快速加入</p>
+                <span class="span-bg"></span>
+                <p class="sub-title">企业信息与企业微信实时同步</p>
+                <img class="erweima" src="/assets/img/erweima.png">
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,258 @@
+.navbar-mx{
+    background-color: #fff;
+}
+@font-face
+{
+    font-family:pingfang;
+    src: url('/assets/fonts/PingFang.ttf'); /* IE9+,可以是具体的实际链接 */
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+    outline: none !important; box-shadow:none !important;
+}
+.content{
+    margin-top: 30px !important;
+}
+footer.footer{
+    background: #fff;
+    display: none;
+}
+footer.footer .copyright{
+    background: #fff;
+}
+.pager li a{
+    color: #5044FF;
+}
+
+
+.dropdown>.dropdown-toggle:active{
+    pointer-events: none;
+}
+.dropdown>.dropdown-toggle:link,.dropdown>.dropdown-toggle:focus{
+    color: #868F91 !important;
+}
+.dropdown-btn{
+    background: none;
+    color: #8F8E96;
+    font-size: 15px;
+}
+
+.breadcrumb-div{
+    padding: 0;
+}
+.breadcrumb li a,.breadcrumb li{
+    font-size: 15px !important;
+}
+.navbar-nav-mx>li{
+    margin: 0 15px;
+}
+.navbar-inverse .navbar-nav>li>a {
+    color: #868F91;
+}
+.navbar-inverse .navbar-nav>li>a:hover {
+    color: #000;
+}
+.breadcrumb{
+    margin-bottom: 15px;
+    background-color: transparent;
+}
+.breadcrumb-a-xm{
+    color: #8F8E96;
+}
+.breadcrumb-a-xm:hover{
+    color: #8F8E96;
+}
+.breadcrumb > li + li:before {
+    color: #8F8E96;
+    padding: 0 4px;
+    content: url('/assets/img/right.png');
+    object-fit: fill;
+}
+.breadcrumb > .active{
+    color: #000;
+}
+.float-right{
+    float: right;
+}
+.clear{
+    clear: both;
+}
+.avatar-a{
+    padding-top: 10px;
+    height: 50px;
+}
+
+
+
+.dropdown-menu li a:hover{
+    background: #F7F7F5;
+}
+
+.col-xs-1-5,
+.col-sm-1-5,
+.col-md-1-5,
+.col-lg-1-5 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.col-xs-1-5 {
+    width: 20%;
+    float: left;
+}
+
+.navbar-mx{
+    height: 80px;
+    min-height: 80px;
+}
+.navbar-nav-mx{
+    float: right;
+}
+.navbar-nav-mx > li > a{
+    font-size: 15px;
+    padding-top: 31.5px;
+    padding-bottom: 31.5px;
+}
+
+.navbar-avatar{
+
+}
+.register, .login{
+    display: inline-block !important;
+}
+.split_line{
+    font-size: 17px;
+    color: #868F91;
+}
+.navbar-nav-mx li > a{
+    font-size: 18px;
+}
+.navbar-avatar > .img-li{
+    height: 80px;
+}
+.navbar-avatar > .img-li > a{
+    padding: 17.5px 0;
+}
+.navbar-avatar > li{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.navbar-avatar > li > a{
+    font-size: 17px;
+    padding: 0 2px;
+}
+.login-text{
+    padding: 31px 2px;
+}
+.download-client{
+    color: #fff;
+    background: #72D6E5;
+    font-size: 16px;
+    padding: 7px 13px;
+    margin: 21px 5% 21px 3%;
+    border-radius: 2px;
+}
+.download-client:hover{
+    color: #fff;
+}
+.nav li .avatar-img{
+    width: 46px;
+    height: 46px;
+    line-height: 46px;
+}
+.nav li .avatar-img img{
+    width: 36px;
+    height: 36px;
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus{
+    background-color: #72D6E5;
+    border-color: #72D6E5;
+}
+
+@media (min-width: 768px) {
+    .col-sm-1-5 {
+        width: 20%;
+        float: left;
+    }
+    .navbar-nav-mx{
+
+    }
+}
+
+@media (min-width: 992px) {
+    .col-md-1-5 {
+        width: 20%;
+        float: left;
+    }
+}
+@media screen and (min-width:1200px){
+
+}
+
+
+@media screen and (min-width:1300px){
+
+    .container {
+        width: 1300px;
+    }
+    .col-lg-1-5 {
+        width: 20%;
+        float: left;
+    }
+    .navbar-header{
+        margin-left: 1.3%;
+    }
+    .navbar-brand{
+        padding-top: 20px;
+    }
+    .navbar-brand img{
+        width: 100%;
+    }
+
+    .dropdown-btn{
+        font-size: 16px;
+    }
+
+    .container-mx{
+        height: 100%;
+        line-height: 100%;
+    }
+    .navbar-avatar{
+
+    }
+    .avatar-a{
+        padding-top: 10px;
+        height: 60px;
+    }
+
+
+    .navbar-avatar .dropdown .dropdown-menu{
+        top: 100%;
+    }
+}
+@media screen and (min-width:1300px) and (max-width: 1400px){
+    .container-login{
+        max-width: 1300px !important;
+        width: 1300px !important;
+    }
+}
+@media screen and (min-width:1400px){
+
+}
+@media screen and (min-width:1500px){
+
+}
+@media screen and (min-width:1600px){
+
+}
+@media screen and (min-width:1800px){
+
+}

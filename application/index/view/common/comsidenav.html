@@ -1,0 +1,128 @@
+<style>
+    .comsidenav .list-group-heading{
+        width: 100%;
+        text-align: center;
+        margin-left: 0 !important;
+        color: #3A3C3C !important;
+        font-size: 17px !important;
+        padding-bottom: 28px;
+        border-bottom: 2px solid #F5F5F5;
+        margin-bottom: 0 !important;
+    }
+    .list-group-heading img{
+        margin-right: 8px;
+    }
+    .list-group-heading span{
+        margin-left: 8px;
+    }
+    .comsidenav{
+        padding-top: 28px;
+        background: #F9FAFC;
+    }
+    .sidenav .list-group .list-group-item > a{
+        padding: 0;
+    }
+    .sidenav .list-group .list-group-item{
+        border-left: none;
+    }
+
+    li{list-style:none}
+    a{text-decoration:none}
+    /*.nav-c{width:220px;height:100%;background:#263238;transition:all .3s}*/
+    .nav-c a{display:block;overflow:hidden;padding-left:30px;line-height:50px;max-height:50px;color:#3A3C3C;font-size:16px;transition:all .3s}
+    /*.nav-c a span{margin-left:30px}*/
+    .nav-item{position:relative}
+    .nav-item.nav-show{border-bottom:0}
+    .nav-item ul{display:none;}
+    .nav-item.nav-show ul{display:block}
+    /*.nav-item>a:before{content:"";position:absolute;left:0;width:2px;height:50px;background:#34a0ce;opacity:0;transition:all .3s}*/
+    .nav-c .nav-icon{font-size:20px;position:absolute;margin-left:-1px}
+    .icon_1::after{content:"\e62b"}
+    .icon_2::after{content:"\e669"}
+    .icon_3::after{content:"\e61d"}
+    .nav-more{
+        float:right;
+        margin-right:20px;
+        font-size:22px;
+        transition:transform .3s;
+        height: 50px;
+        line-height: 50px;
+    }
+    .icon{
+        display: inline-block;
+        transition:all .3s;
+        width: 15px;
+        height: 15px;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        vertical-align: middle;
+        margin-bottom: 2px;
+    }
+    .nav-item1 .icon{background-image: url("/assets/img/shouye.png");}
+    .nav-item2 .icon{background-image: url("/assets/img/guanli.png");}
+    .nav-item3 .icon{width:16px;background-image: url("/assets/img/qiye.png");}
+    .nav-item4 .icon{width:16px;background-image: url("/assets/img/goujian.png");}
+    .nav-item1>a:hover .icon{background-image: url("/assets/img/shouye-w.png") !important;}
+    .nav-item2>a:hover .icon{background-image: url("/assets/img/guanli-w.png") !important;}
+    .nav-item3>a:hover .icon{background-image: url("/assets/img/qiye-w.png") !important;}
+    .nav-item4>a:hover .icon{background-image: url("/assets/img/goujian-w.png") !important;}
+    .nav-show .nav-more{transform:rotate(180deg);color: #fff}
+    .nav-show,.nav-item>a:hover{color:#fff;background:#72D6E5}
+    .nav-show>a:before,.nav-item>a:hover:before{opacity:1}
+    .item-icon{
+        display: inline-block;
+        transition:all .3s;
+        width: 15px;
+        height: 15px;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        vertical-align: middle;
+        margin-bottom: 2px;
+    }
+    .nav-item2 .item-icon1{background-image: url("/assets/img/fenfa.png");}
+    .nav-item4 .item-icon1{background-image: url("/assets/img/upload.png");}
+    .nav-item4 .item-icon2{background-image: url("/assets/img/qi.png");}
+    .nav-item2 li:hover .item-icon1{background-image: url("/assets/img/fenfa-l.png");}
+    .nav-item4 li:hover .item-icon1{background-image: url("/assets/img/upload-l.png");}
+    .nav-item4 li:hover .item-icon2{background-image: url("/assets/img/qi-l.png");}
+    .nav-show>a span{
+        color: #fff;
+    }
+    .nav-show>ul{
+        background: #fff !important;
+    }
+    .nav-item li:hover a{color: #72D6E5}
+
+    .color-72D6E5{
+        color: #72D6E5
+    }
+</style>
+<div class="sidenav comsidenav nav-c">
+    {:hook('component_sidenav_before')}
+    <ul class="list-group">
+        <li class="list-group-heading"><img src="/assets/img/logo_sm.png">&bull;<span>企业中心</span></li>
+        <li class="nav-item nav-item1"> <a href="{:url('component/mylist')}"><i class="icon"></i> <span>首页</span></a> </li>
+<!--        <li class="list-group-item {:$config['actionname']=='upload'?'active':''}"> <a href="{:url('component/upload')}"><i class="fa fa-user-circle fa-fw"></i> {:__('Upload component')}</a> </li>-->
+        <li class="nav-item nav-item2">
+            <a href="javascript:;"><i class="icon"></i> <span>管理账号</span><i class="fa fa-angle-up nav-more"></i></a>
+            <ul class="item-ul">
+                <li><a href="javascript:;"><i class="item-icon item-icon1"></i> <span>分发账号</span></a></li>
+            </ul>
+        </li>
+        <li class="nav-item nav-item3">
+            <a href="javascript:;"><i class="icon"></i> <span>企业信息</span><i class="fa fa-angle-up nav-more"></i></a>
+            <ul class="item-ul">
+                <li><a href="javascript:;"><i class="item-icon item-icon1"></i> <span>企业认证</span></a></li>
+                <li><a href="javascript:;"><i class="item-icon item-icon2"></i> <span>基本资料</span></a></li>
+            </ul>
+        </li>
+        <li class="nav-item nav-item4 {:$config['actionname']=='mylist'?'nav-show':''}">
+            <a href="{:url('component/mylist')}"><i class="icon" style='background-image: url("{:$config['actionname']=='mylist'?'/assets/img/goujian-w.png':''}")'></i> <span>我的构件</span><i class="fa fa-angle-up nav-more"></i></a>
+            <ul class="item-ul4">
+                <li><a href="javascript:;"><i class="item-icon item-icon1" style="{if condition="$config['actionname'] eq 'upload'"}background-image: url('/assets/img/upload-l.png'){/if}"></i> <span class="{if condition="$config['actionname'] eq 'upload'"}color-72D6E5{/if}">上传构件</span></a></li>
+                <li><a href="javascript:;"><i class="item-icon item-icon2"></i> <span>专属企业码</span></a></li>
+            </ul>
+        </li>
+    </ul>
+    {:hook('component_sidenav_after')}
+</div>

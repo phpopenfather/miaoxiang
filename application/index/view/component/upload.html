@@ -1,0 +1,338 @@
+<style>
+    /*.btn-add{*/
+    /*    border-radius: 20px;*/
+    /*    border: 1px solid #46c37b;*/
+    /*    padding: 10px 40px;*/
+    /*    color: #46c37b;*/
+    /*}*/
+    /*.component-jumbotron{*/
+    /*    background: none;*/
+    /*    text-align: center;*/
+    /*}*/
+
+    /*.component-image-container {*/
+    /*    position:relative;*/
+    /*    width:100%;*/
+    /*    height: 100%;*/
+    /*}*/
+    /*.component-image-container .component-img{*/
+    /*    width:280px;*/
+    /*    height:150px;*/
+    /*    margin: 0 auto;*/
+    /*    padding: 3px;*/
+
+    /*}*/
+    /*#plupload-attachfile{*/
+    /*    width: 280px;*/
+    /*    height: 150px;*/
+    /*}*/
+    /*.component-image-container .component-image-text {*/
+    /*    background: #F7F7F5;*/
+    /*    display:block;*/
+    /*    position:absolute;*/
+    /*    height:150px;*/
+    /*    width:280px;*/
+    /*    background:#F7F7F5;*/
+    /*    border-radius: 10px;*/
+    /*    !*opacity: .3;*!*/
+    /*    color: #46c37b;*/
+    /*    top:0;*/
+    /*    left:0;*/
+    /*    line-height: 100px;*/
+    /*    text-align: center;*/
+    /*}*/
+    /*.component-image-container:hover .component-image-text {*/
+
+    /*}*/
+    /*.component-image-container button{*/
+    /*    position:absolute;*/
+    /*    top:0;*/
+    /*    left:0;*/
+    /*    width:100%;*/
+    /*    height:100%;*/
+    /*    opacity: 0;*/
+    /*}*/
+
+    /*.inline-form{*/
+    /*    width: 50%;*/
+    /*    float: left;*/
+    /*    display: inline;*/
+    /*}*/
+
+    .upload-div{
+        background: #fff;
+        width: 100%;
+        border-radius: 35px;
+        padding: 50px 0;
+    }
+    #upload-form{
+        text-align: center;
+    }
+    .upload-form-div{
+        margin: 0 auto;
+        float: none;
+        font-size: 14px;
+    }
+    .form-group >.col-sm-2{
+
+    }
+    .form-group .control-label{
+        padding-top: 9px;
+    }
+    .form-group .form-control-input{
+        border-radius: 4px;
+        height: 38px;
+        padding: 7px 17px;
+        border-color: #E3E3E3;
+    }
+    .form-control-div >textarea{
+        border-radius: 4px;
+        padding: 7px 17px;
+        border-color: #E3E3E3;
+    }
+    .form-control-div >.radio{
+        text-align: left;
+    }
+    .form-control-div >.radio label{
+        margin-right: 13px;
+    }
+    .form-control-div{
+        padding-left: 0px;
+    }
+
+
+    .upload-img-container {
+        position:relative;
+        width:120px;
+        float: left;
+        overflow: hidden;
+        border-radius: 15px;
+        /*background: #F7F7F5;*/
+    }
+    .upload-bg{
+        background-image: url("/assets/img/upload-img.png");
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+    .upload-file-bg{
+        background-image: url("/assets/img/upload-file.png");
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+    .upload-img-container .upload-img{
+        width:120px;
+        height:120px;
+    }
+    .upload-img-container .upload-img-text {
+        display:none;
+        opacity: 0;
+    }
+    .upload-img-container:hover .upload-img-text {
+        display:block;
+        position:absolute;
+        height:120px;
+        width:120px;
+        background:#444;
+        color: #fff;
+        top:0;
+        left:0;
+        line-height: 120px;
+        text-align: center;
+    }
+    .upload-img-container button{
+        position:absolute;
+        top:0;left:0;width:120px;height:120px;opacity: 0;
+    }
+    .upload-p{
+        color: #8F8E96;
+        font-size: 12px;
+        float: left;
+        line-height: 22px;
+        margin: 39px 0 0 20px;
+        text-align: left;
+    }
+    .file-text{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 120px;
+        height: 120px;
+        opacity: 0;
+        background: #F7F7F5;
+        font-size: 12px;
+        color: #8F8E96;
+        padding: 18px 5px;
+        text-align: justify;
+        word-wrap:break-word;
+    }
+    .upload-btn-div{
+        padding-left: 50px;
+        text-align: left
+    }
+    .upload-btn-div button{
+        padding: 9px 39px;
+        font-size: 13px;
+        border: none;
+        border-radius: 16px;
+    }
+    .upload-btn-div .reset{
+        background: #E3E3E3;
+        color: #fff;
+    }
+    .upload-btn-div .sub{
+        background: #5044FF;
+        margin-left: 13px;
+        color: #fff;
+    }
+    .category-div .msg-box{
+        position: absolute;
+        right: -93%;
+        /*left: 108%;*/
+    }
+    .form-group-div >.form-group{
+        margin: 0;
+    }
+    .msg-div .msg-box{
+        right: 54%;
+    }
+    .layer-footer{
+        margin-top: 50px;
+    }
+
+</style>
+<div id="content-container" class="container">
+
+    <div class="row">
+        <div class="col-md-12 breadcrumb-div">
+            <ul class="breadcrumb">
+                <li><a class="breadcrumb-a-xm" href="{:url('component/index')}">我的构件</a></li>
+                <li class="active">上传构件</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row upload-div">
+        <div class="col-md-8 upload-form-div" style="">
+            <form id="upload-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="{:url('api/component/upload')}">
+
+                    {:token()}
+
+                    <div class="form-group">
+                        <label class="control-label col-xs-12 col-sm-2">{:__('Component name')}</label>
+                        <div class="col-xs-12 col-sm-6 form-control-div">
+                            <input id="c-name" data-rule="required" placeholder="请输入{:__('Component name')}（必填）" class="form-control form-control-input" name="name" type="text" value="">
+                        </div>
+                    </div>
+
+                    <div data-toggle="cxselect" class="category-div" data-selects="category_id,category_child_id" >
+                        <div class="form-group">
+                            <label class="control-label col-xs-12 col-sm-2">{:__('Component category')}</label>
+                            <div class="col-xs-12 col-sm-3 form-control-div">
+                                <select id="c-category_id" data-rule="required" data-url="ajax/category?type=component&pid=14" class="form-control form-control-input category_id" name="category_id"></select>
+                            </div>
+                            <div class="col-xs-12 col-sm-3 form-control-div">
+                                <select id="c-category_child_id" class="consumable form-control form-control-input category_child_id" data-rule="required" name="category_child_id" data-url="ajax/category" data-query-name="pid"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-12 col-sm-2">{:__('Description')}</label>
+                        <div class="col-xs-12 col-sm-9 form-control-div">
+                            <input id="c-description" data-rule="required" class="form-control form-control-input" placeholder="请输入{:__('Description')}（必填）" name="description" type="text" value="">
+                        </div>
+                    </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-12 col-sm-2">{:__('Component size')}</label>
+                    <div class="col-xs-12 col-sm-9 form-control-div">
+                        <input id="c-size" class="form-control  form-control-input" placeholder="请输入{:__('Component size')}" name="size" type="text" value="">
+                    </div>
+                </div>
+                    <div class="form-group">
+                        <label class="control-label col-xs-12 col-sm-2">{:__('Component rules')}</label>
+                        <div class="col-xs-12 col-sm-9 form-control-div" style="height: 152px;">
+                            <textarea id="c-rules" placeholder="请输入{:__('Component rules')}（必填）"  class="form-control"  data-rule="required" name="rules" rows="8" cols="20"></textarea>
+                        </div>
+                    </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-12 col-sm-2">{:__('Component price')}</label>
+                    <div class="col-xs-12 col-sm-4 form-control-div">
+                        <input id="c-price" placeholder="￥人民币（必填）" data-rule="required" class="form-control form-control-input" step="0.01" name="price" type="number" value="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-xs-12 col-sm-2">上传到</label>
+                    <div class="col-xs-12 col-sm-4 form-control-div">
+                        {:build_radios('is_private', ['1'=>'私有库', '2'=>'公有库'])}
+                    </div>
+                </div>
+                    <div class="form-group form-group-div" style="padding-top: 15px;">
+                        <p class="control-label" style="text-align: left;padding-left: 56px;margin-bottom: 18px;">构件文件</p>
+                        <div class="col-xs-12 col-sm-6 form-control-div form-group msg-div" style="padding-left: 50px;">
+                            <input id="c-image" data-rule="required" name="image" type="hidden" value="">
+                            <div class="upload-img-container upload-bg">
+                                <img class="upload-img img-responsive plupload upload-img-url" src="" alt="">
+                                <div id="upload-img-text" class="upload-img-text">{:__('Click to edit')}</div>
+                                <button id="plupload-img" class="plupload" data-input-id="c-image" data-mimetype="image/jpeg,image/png,image/jpg" data-multiple="false"><i class="fa fa-upload"></i> {:__('Upload')}</button>
+                            </div>
+                            <p class="upload-p">单个文件大小不超过5M；<br>支持JPEG、PNG文件格式；</p>
+<!--                            <div class="input-group">-->
+<!--                                <input id="c-image" data-rule="required" class="form-control form-control-input" size="50" name="image" type="text" value="">-->
+<!--                                <div class="input-group-addon no-border no-padding">-->
+<!--                                    <span><button type="button" id="plupload-image" class="btn btn-danger plupload" data-input-id="c-image" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp" data-multiple="false" data-preview-id="p-image"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>-->
+<!--                                </div>-->
+<!--                                <span class="msg-box n-right" for="c-image"></span>-->
+<!--                            </div>-->
+<!--                            <ul class="row list-inline plupload-preview" id="p-image"></ul>-->
+                        </div>
+                        <div class="col-xs-12 col-sm-6 form-control-div msg-div form-group">
+                            <input id="c-attachfile" data-rule="required" name="attachfile" type="hidden" value="">
+                            <div class="upload-img-container upload-file-bg">
+                                <img class="upload-img img-responsive plupload" src="" alt="">
+                                <div class="file-text"></div>
+                                <div id="upload-file-text" class="upload-img-text">{:__('Click to edit')}</div>
+                                <button id="plupload-attachfile" class="plupload" data-mimetype="FBX" data-input-id="c-attachfile" data-multiple="false"><i class="fa fa-upload"></i> {:__('Upload')}</button>
+                            </div>
+                            <p class="upload-p">单个文件大小不超过200M；<br>支持fbx文件格式；</p>
+                        </div>
+                    </div>
+<!--                    <div class="form-group">-->
+<!--                        <label class="control-label col-xs-12 col-sm-2">{:__('Attachfile')}</label>-->
+<!--                        <div class="col-xs-12 col-sm-9 form-control-div">-->
+<!--                            <div class="input-group">-->
+<!--                                <input id="c-attachfile" data-rule="required" class="form-control form-control-input" size="50" name="attachfile" type="text" value="">-->
+<!--                                <div class="input-group-addon no-border no-padding">-->
+<!--                                    <span><button type="button" id="plupload-attachfile" class="btn btn-danger plupload" data-input-id="c-attachfile" data-multiple="false" data-preview-id="p-attachfile"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>-->
+<!--                                </div>-->
+<!--                                <span class="msg-box n-right" for="c-attachfile"></span>-->
+<!--                            </div>-->
+<!--                            <ul class="row list-inline plupload-preview" id="p-attachfile"></ul>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                    <div class="form-group layer-footer">
+                        <label class="control-label col-xs-12 col-sm-2"></label>
+                        <div class="col-xs-12 col-sm-12 form-control-div upload-btn-div">
+                            <button type="reset" class="reset btn btn-default btn-embossed">{:__('Reset')}</button>
+                            <button type="submit" class="sub btn btn-success btn-embossed disabled">{:__('Save')}</button>
+                        </div>
+                    </div>
+
+                </form>
+        </div>
+    </div>
+
+    <div style="display: none" class="row">
+        <div class="col-md-3">
+            {include file="common/comsidenav" /}
+        </div>
+        <div class="col-md-9">
+            <div class="panel panel-default ">
+                <div class="panel-body">
+                    <h2 class="page-header">
+                        {:__('Upload component')}
+                    </h2>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
