@@ -118,6 +118,26 @@ header {
 
     /*color: white;*/
 }
+header .content4 .content4-1{
+    background: url("../img/front/shenhe.png");
+    width: 344px;
+}
+header .content4 .content4-2{
+    background: url("../img/front/zhuanshu.png");
+    width: 344px;
+}
+header .content4 .content4-3{
+    background: url("../img/front/shenhe.png");
+    width: 344px;
+}
+header .content4 .content4-4{
+    background: url("../img/front/shuzi.png");
+    width: 344px;
+}
+header .content4 .content4-5{
+    background: url("../img/front/zhuanshu.png");
+    width: 344px;
+}
 header .header-content {
     text-align: center;
     padding: 150px 0 50px;

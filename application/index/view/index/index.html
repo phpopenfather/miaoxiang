@@ -1,6 +1,19 @@
 <!DOCTYPE html>
-<html>
 
+<html>
+<style>
+    .navbar-top{
+        width: 72px;
+        height: 25px;
+        font-size: 28px;
+        font-family: PingFang SC;
+        font-weight: 400;
+        line-height: 25px;
+        color: #868F91;
+        opacity: 1;
+
+    }
+</style>
     <head>
 
         <meta charset="utf-8">
@@ -29,19 +42,25 @@
     <body id="page-top">
 
         <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
+            <div class="container" style="width: 100%;height:100px;background-color: white">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-menu">
                         <span class="sr-only">Toggle navigation</span><i class="fa fa-bars"></i>
                     </button>
-                    <a class="navbar-brand page-scroll" href="#page-top">{$site.name}</a>
+<!--                    <a class="navbar-brand page-scroll" href="#page-top">{$site.name}</a>-->
+                    <a class="navbar-brand" href="{:url('/')}"><img class="img-responsive" style="left: 20px" src="<?php if(isset($logo)){ echo $logo;}else{ echo '/assets/img/logo@2x.png';}?>"></a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="navbar-collapse-menu">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{:url('/')}" style="color: #0d0d0d">{:__('Home')}</a></li>
-                        <li><a href="{:url('/index/component/index')}" style="color: #0d0d0d">{:__('Component')}</a></li>
-                        <li><a href="{:url('index/user/index')}" style="color: #0d0d0d">{:__('Member center')}</a></li>
+                    <ul class="nav navbar-nav navbar-right" style="width: 40%;margin-right: 3%">
+<!--                        <li><a href="{:url('/')}" style="color: #868F91">{:__('Home')}</a></li>-->
+<!--                        <li><a href="{:url('/index/component/index')}" style="color: #868F91">{:__('Component')}</a></li>-->
+<!--                        <li><a href="{:url('index/user/index')}" style="color: #868F91">{:__('Member center')}</a></li>-->
+                        <li class="navbar-top" style="width: 14%;margin-top: 4%"><a href="{:url('/')}" style="color: #868F91;font-size: large;text-align: right">{:__('Home')}</a></li>
+                        <li class="navbar-top" style="width: 20%;margin-top: 4%"><a href="{:url('/index/component/index')}" style="color: #868F91;font-size: large;text-align: right">{:__('Component')}</a></li>
+                        <li class="navbar-top" style="width: 20%;margin-top: 4%"><a href="{:url('index/user/index')}" style="color: #868F91;font-size: large;text-align: center">企业信息</a></li>
+                        <li class="navbar-top" style="width: 23%;margin-top: 4%"><a href="{:url('index/user/login')}" style="color: #868F91;font-size: large;text-align: left">登录/注册</a></li>
+                        <li class="navbar-top" style="width: 18%;margin-top: 4%"><a href="" style="font-size: large;background-color: #72D6E5;text-align: center";>客户端下载</a></li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -49,7 +68,8 @@
             <!-- /.container-fluid -->
         </nav>
 
-        <header>
+<!--        <header>-->
+
 <!--            <div class="container">-->
 <!--                <div class="row">-->
 <!--                    <div class="col-sm-12">-->
@@ -61,8 +81,190 @@
 <!--                    </div>-->
 <!--                </div>-->
 <!--            </div>-->
-        </header>
+<!--        </header>-->
 
+        <header>
+           <!-- content 1 -->
+        <div style="float: left">
+            <table style="margin-top: 417px;margin-left: 380px;">
+                <tr>
+                    <td  colspan="2" style="width: 560px;height: 78px;font-size: 56px;font-family: PingFang SC;font-weight: 500;line-height: 78px;color: #FFFFFF;opacity: 1;">装配式内装行业引领者</td>
+                </tr>
+                <tr style="height: 100px">
+                    <td style="width: 56px;"><h5></h5></td>
+                    <td style="width: 336px;height: 40px;font-size: 28px;font-family: PingFang SC;font-weight: 400;line-height: 40px;color: #FFFFFF;opacity: 1;">现在加入免企业数据服务费</td>
+                </tr>
+                <tr>
+                        <td style="width: 96px;height: 33px;font-size: 18px;font-family: PingFang SC;font-weight: 300;line-height: 33px;color: #FFFFFF;opacity: 1;background-color: #72D6E5;text-align: center">
+                            立即加入
+                        </td>
+                 <td>
+
+                 </td>
+                </tr>
+            </table>
+        </div>
+           <!-- content 1 -->
+        <!-- content 2 -->
+        <div style="float: left;margin-left:310px; width: 1299px;height: 1000px;">
+            <table style="margin-top: 595px;align-self: center;">
+                <tbody>
+                <tr>
+                    <td style="text-align:center;vertical-align:middle; height: 187px;background-color: white";><img style="" src="<?php  echo '/assets/img/front/shuzi(1).png'; ?>"></td>
+                    <td style="text-align:center;vertical-align:middle;"><img style="" src="<?php  echo '/assets/img/front/ruanjiandingzhi.png'; ?>"></td>
+                    <td style="text-align:center;vertical-align:middle;;background-color: white"><img style="" src="<?php  echo '/assets/img/front/chaidanjiage.png'; ?>"></td>
+                </tr>
+                <tr>
+                    <td style="text-align:center;vertical-align:middle; color: #3A3C3C;height: 41px;background-color: white">专属数字构件</td>
+                    <td style="text-align:center;vertical-align:middle; color: #3A3C3C">专属软件定制</td>
+                    <td style="text-align:center;vertical-align:middle; color: #3A3C3C;background-color: white">专属价格拆单</td>
+                </tr>
+                <tr>
+                    <td style="text-align:center;vertical-align:middle; color: #3A3C3C;padding: 10px;background-color: white">AntV 是蚂蚁金服全新一代数据可视化解决方案，致力于提供一套简单方便、专业可靠、无限可能的数据可视化最佳实践。</td>
+                    <td style="text-align:center;vertical-align:middle; color: #3A3C3C;padding: 10px">AntV 是蚂蚁金服全新一代数据可视化解决方案，致力于提供一套简单方便、专业可靠、无限可能的数据可视化最佳实践。</td>
+                    <td style="text-align:center;vertical-align:middle; color: #3A3C3C;padding: 10px;background-color: white">AntV 是蚂蚁金服全新一代数据可视化解决方案，致力于提供一套简单方便、专业可靠、无限可能的数据可视化最佳实践。</td>
+                </tr>
+                <tr>
+                    <td style="text-align:center;vertical-align:middle; color: #3A3C3C;height: 81px;background-color: white"><a href="">了解更多 ></a></td>
+                    <td style="text-align:center;vertical-align:middle; color: #3A3C3C"><a href="">了解更多 ></a></td>
+                    <td style="text-align:center;vertical-align:middle; color: #3A3C3C;background-color: white"><a href="">了解更多 ></a></td>
+                </tr>
+                <tr>
+                    <td style="text-align:center;vertical-align:middle; height: 187px;"><img style="" src="<?php  echo '/assets/img/front/guanlitixi.png'; ?>"></td>
+                    <td style="text-align:center;vertical-align:middle;background-color: white"><img style="" src="<?php  echo '/assets/img/front/shejitixi.png'; ?>"></td>
+                    <td style="text-align:center;vertical-align:middle;"><img style="" src="<?php  echo '/assets/img/front/ronghetixi.png'; ?>"></td>
+                </tr>
+                <tr>
+                    <td style="text-align:center;vertical-align:middle; color: #3A3C3C;height: 41px">专业装配式管理体系</td>
+                    <td style="text-align:center;vertical-align:middle; color: #3A3C3C;background-color: white">专业装配式设计体系</td>
+                    <td style="text-align:center;vertical-align:middle; color: #3A3C3C">专业装配式融合体系</td>
+                </tr>
+                <tr>
+                    <td style="text-align:center;vertical-align:middle; color: #3A3C3C;padding: 10px">AntV 是蚂蚁金服全新一代数据可视化解决方案，致力于提供一套简单方便、专业可靠、无限可能的数据可视化最佳实践。</td>
+                    <td style="text-align:center;vertical-align:middle; color: #3A3C3C;padding: 10px;background-color: white">AntV 是蚂蚁金服全新一代数据可视化解决方案，致力于提供一套简单方便、专业可靠、无限可能的数据可视化最佳实践。</td>
+                    <td style="text-align:center;vertical-align:middle; color: #3A3C3C;padding: 10px">AntV 是蚂蚁金服全新一代数据可视化解决方案，致力于提供一套简单方便、专业可靠、无限可能的数据可视化最佳实践。</td>
+                </tr>
+                <tr>
+                    <td style="text-align:center;vertical-align:middle; color: #3A3C3C;height: 81px"><a href="">了解更多 ></a></td>
+                    <td style="text-align:center;vertical-align:middle; color: #3A3C3C;background-color: white"><a href="">了解更多 ></a></td>
+                    <td style="text-align:center;vertical-align:middle; color: #3A3C3C"><a href="">了解更多 ></a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- content 2 -->
+
+        <!-- content 3 -->
+        <div style="float: left;margin-left:455px; width: 1299px;height: 1000px;">
+            <table style="width:1200px;margin-top: 575px;align-self: center;"border="0">
+                <tbody>
+                <tr>
+                    <td style="text-align:center;vertical-align:middle; color: #3A3C3C;height: 41px;">数字构件</td>
+                    <td style="text-align:center;vertical-align:middle; color: #3A3C3C;height: 41px;">装配式技工(秒象快工）</td>
+                    <td style="text-align:center;vertical-align:middle; color: #3A3C3C;height: 41px;">装配式设计师</td>
+                    <td style="text-align:center;vertical-align:middle; color: #3A3C3C;height: 41px;">累计助力企业</td>
+                    <td rowspan="6" style="text-align:right;vertical-align:middle; color: #3A3C3C;height: 41px;width: 320px"><a href=""><img style="" src="<?php  echo '/assets/img/front/shuaxin.png'; ?>"> </a></td>
+                </tr>
+                <tr>
+                    <td style="text-align:center;vertical-align:middle;color: #72D6E5;font-size: 48px">3428</td>
+                    <td style="text-align:center;vertical-align:middle;color: #72D6E5;font-size: 48px">364</td>
+                    <td style="text-align:center;vertical-align:middle;color: #72D6E5;font-size: 48px">236</td>
+                    <td style="text-align:center;vertical-align:middle;color: #72D6E5;font-size: 48px">369</td>
+                </tr>
+                <tr>
+                    <td style="text-align:center;vertical-align:top; color: #3A3C3C;height: 81px;">数量</td>
+                    <td style="text-align:center;vertical-align:top; color: #3A3C3C;height: 81px;">人数</td>
+                    <td style="text-align:center;vertical-align:top; color: #3A3C3C;height: 81px;">人数</td>
+                    <td style="text-align:center;vertical-align:top; color: #3A3C3C;height: 81px;">数量</td>
+                </tr>
+                <tr>
+                    <td style="text-align:center;vertical-align:bottom; color: #3A3C3C;height: 41px;">累计拆单</td>
+                    <td style="text-align:center;vertical-align:bottom; color: #3A3C3C;height: 41px;">累计辅助装配式交易额</td>
+                    <td style="text-align:center;vertical-align:bottom; color: #3A3C3C;height: 41px;">累计成交门店</td>
+                    <td style="text-align:center;vertical-align:bottom; color: #3A3C3C;height: 41px;">累计合作展区</td>
+                </tr>
+                <tr>
+                    <td style="text-align:center;vertical-align:middle;color: #72D6E5;font-size: 48px">648</td>
+                    <td style="text-align:center;vertical-align:middle;color: #72D6E5;font-size: 48px">248</td>
+                    <td style="text-align:center;vertical-align:middle;color: #72D6E5;font-size: 48px">6948</td>
+                    <td style="text-align:center;vertical-align:middle;color: #72D6E5;font-size: 48px">468</td>
+                </tr>
+                <tr>
+                    <td style="text-align:center;vertical-align:top; color: #3A3C3C;height: 41px;">数量</td>
+                    <td style="text-align:center;vertical-align:top; color: #3A3C3C;height: 41px;">额度</td>
+                    <td style="text-align:center;vertical-align:top; color: #3A3C3C;height: 41px;">数量</td>
+                    <td style="text-align:center;vertical-align:top; color: #3A3C3C;height: 41px;">数量</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- content 3 -->
+
+        <!-- content 4 -->
+        <div style="float: left;margin-left:370px; width: 1299px;height: 1000px;" class="content4">
+            <table style="width:1200px;margin-top: 1205px;align-self: center;"border="0">
+                <tbody>
+                <tr>
+                    <td style="text-align:center;vertical-align:middle;" class="content4-1"><a href="">
+                        <img style="" src="<?php  echo '/assets/img/front/shangchuan.png'; ?>"></a><br>
+                        <h5 style="margin-top: 15%"><b>用户上传构件</b></h5>
+                        <h6 style="margin-top: 10%">全面开放百度大脑领先能力</h6>
+                    </td>
+                    <td style="text-align:center;vertical-align:middle; color: #3A3C3C;height: 310px;" class="content4-2"><a href="">
+                        <img style="" src="<?php  echo '/assets/img/front/tijiao.png'; ?>">
+                    </a><br>
+                        <h5 style="margin-top: 15%"><b>提交至秒象官方</b></h5>
+                        <h6 style="margin-top: 10%">全面开放百度大脑领先能力</h6>
+                    </td>
+                    <td style="text-align:center;vertical-align:middle; color: #3A3C3C;height: 41px;" class="content4-3"><a href="">
+                        <img style="" src="<?php  echo '/assets/img/front/shenhe(1).png'; ?>">
+                    </a><br>
+                        <h5 style="margin-top: 15%"><b>秒象审核调整</b></h5>
+                        <h6 style="margin-top: 10%">全面开放百度大脑领先能力</h6>
+                    </td>
+                    <td style="text-align:center;vertical-align:middle; color: #3A3C3C;height: 41px;" class="content4-4"><a href="">
+                        <img style="" src="<?php  echo '/assets/img/front/shuzi(2).png'; ?>">
+                    </a><br>
+                        <h5 style="margin-top: 15%"><b>制作秒象数字固件</b></h5>
+                        <h6 style="margin-top: 10%">全面开放百度大脑领先能力</h6>
+                    </td>
+                    <td rowspan="6" style="text-align:center;vertical-align:middle; color: #3A3C3C;height: 41px;" class="content4-5"><a href="">
+                        <img style="" src="<?php  echo '/assets/img/front/zhuanshu(1).png'; ?>">
+                    </a><br>
+                        <h5 style="margin-top: 15%"><b>生成专属企业码</b></h5>
+                        <h6 style="margin-top: 10%">全面开放百度大脑领先能力</h6>
+                    </a></td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <!-- content 4 -->
+
+        <!-- content 5 -->
+        <div style="float: left;margin-left:370px; width: 1299px;height: 1000px;" class="content4">
+            <table style="width:1200px;margin-top: 905px;align-self: center;"border="1">
+                <tbody>
+                <tr>
+                <td style="color: #3A3C3C;font-size: 32px">长期公益计划</td>
+                </tr>
+                <tr>
+                    <td style="color: #3A3C3C;font-size: 18px;margin-top: 20%">如果您是退役军人低保困难，主页技工培训，免费提供宿舍.</td>
+                </tr>
+                <tr>
+                    <td>下一条 ></td>
+                </tr>
+                <tr>
+                    <td>立即申请</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <!-- content 5 -->
+        </header>
 
         <!-- jQuery -->
         <script src="https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js"></script>
