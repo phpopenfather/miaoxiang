@@ -98,20 +98,25 @@ p {
     .navbar-default .nav > li > a:hover,
     .navbar-default .nav > li > a:focus:hover {
         color: white;
-    }
+    }body
 }
 header {
-    position: relative;
+    height: 5998px;
+    /*width: 1920px;*/
     width: 100%;
-    min-height: auto;
-    overflow-y: hidden;
-    background: url("../img/bg-pattern.png"), #247cdc;
-    /* fallback for old browsers */
-    background: url("../img/bg-pattern.png"), -webkit-linear-gradient(to left, #328944, #247cdc);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: url("../img/bg-pattern.png"), linear-gradient(to left, #328944, #247cdc);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    color: white;
+    background: url("../img/front/bg.jpg");
+    /*position: relative;*/
+    /*width: 100%;*/
+    /*min-height: auto;*/
+    /*overflow-y: hidden;*/
+    /*background: url("../img/bg-pattern.png"), #247cdc;*/
+    /*!* fallback for old browsers *!*/
+    /*background: url("../img/bg-pattern.png"), -webkit-linear-gradient(to left, #328944, #247cdc);*/
+    /*!* Chrome 10-25, Safari 5.1-6 *!*/
+    /*background: url("../img/bg-pattern.png"), linear-gradient(to left, #328944, #247cdc);*/
+    /*!* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ *!*/
+
+    /*color: white;*/
 }
 header .header-content {
     text-align: center;
