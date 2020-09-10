@@ -8,6 +8,7 @@ use think\addons\Controller;
 use Yansongda\Pay\Log;
 use Yansongda\Pay\Pay;
 use Exception;
+use think\Db;
 
 /**
  * 微信支付宝插件首页
@@ -64,6 +65,9 @@ class Index extends Controller
         $notifyurl = $this->request->root(true) . '/addons/epay/index/notifyx/paytype/' . $type;
         $returnurl = $this->request->root(true) . '/addons/epay/index/returnx/paytype/' . $type . '/out_trade_no/' . $out_trade_no;
 
+        //用户订单微信支付数据插入数据表，订单状态为未支付：0
+        Db::execute('insert into fa_wechat_pay_log (out_trade_no,amount,state) values (?,?,?)',[$out_trade_no,$amount,'0']);
+
         return Service::submitOrder($amount, $out_trade_no, $type, $title, $notifyurl, $returnurl, $method);
 
     }
@@ -98,15 +102,31 @@ class Index extends Controller
         $paytype = $this->request->param('paytype');
         $out_trade_no = $this->request->param('out_trade_no');
         $pay = \addons\epay\library\Service::checkReturn($paytype);
+
         if (!$pay) {
             $this->error('签名错误');
         }
 
         //你可以在这里通过out_trade_no去验证订单状态
+
+        //用户订单微信支付成功后，将订单状态改为1
+        Db::table('fa_wechat_pay_log')->where('out_trade_no',$out_trade_no)->update(['state'=>1]);
+
         //但是不可以在此编写订单逻辑！！！
 
 //        $this->success("请返回网站查看支付结果", addon_url("epay/index/index"));
         $this->success("请返回网站查看支付结果", url("index/index/index"));
+    }
+
+    /**
+     * 微信支付后的订单状态查询api
+     */
+    public function wechat_pay_state()
+    {
+        $out_trade_no = $this->request->param('out_trade_no');
+        $res = Db::query('select * from fa_wechat_pay_log where out_trade_no=?',[$out_trade_no]);
+
+        echo \GuzzleHttp\json_encode($res);die;
     }
 
 }
