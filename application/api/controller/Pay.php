@@ -12,28 +12,73 @@ use think\Response;
 class Pay extends Api
 {
     protected $model = null;
-    protected $noNeedLogin = [];
-    protected $noNeedRight = ['pay','codePay'];
+    protected $noNeedLogin = ['*'];
+    protected $noNeedRight = ['*'];
 
     public function _initialize()
     {
         parent::_initialize();
 
     }
+    //微信支付接口
+    public function wechat_pay(){
+//        $amount = $this->request->request('amount');
+//        $type = $this->request->request('type');
+//        $method = $this->request->request('method');
+
+        $amount = '0.01';
+        $type = 'wechat';
+        $method = 'web';
+
+        if (!$amount || $amount < 0) {
+            $this->error("支付金额必须大于0");
+        }
+
+        if (!$type || !in_array($type, ['alipay', 'wechat'])) {
+            $this->error("支付类型不能为空");
+        }
+
+        //订单号
+        $out_trade_no = date("YmdHis") . mt_rand(100000, 999999);
+
+        //订单标题
+        $title = '秒象测试订单';
+
+        //回调链接
+        $notifyurl = $this->request->root(true) . '/addons/epay/index/notifyx/paytype/' . $type;
+//        $notifyurl = 'http://121.196.179.114/addons/epay/index/notifyx/paytype/' . $type;
+        $returnurl = $this->request->root(true) . '/addons/epay/index/returnx/paytype/' . $type . '/out_trade_no/' . $out_trade_no;
+
+        $params = [
+            'amount'=>$amount,
+            'orderid'=>$out_trade_no,
+            'type'=>$type,
+            'title'=>$title,
+            'notifyurl'=>$notifyurl,
+            'returnurl'=>$returnurl,
+            'method'=>"web",
+            'openid'=>"1112",
+//                'auth_code'=>"验证码"
+        ];
+
+//        return Service::submitOrder($amount, $out_trade_no, $type, $title, $notifyurl, $returnurl, $method);
+        return Service::submitOrder($params);
+    }
 
     public function pay(){
         $params = [
-            'amount'=>"99.9",
-            'orderid'=>"111111",
+            'amount'=>"0.99",
+            'orderid'=>"898",
             'type'=>"alipay",
-            'title'=>"测试标题",
+            'title'=>"秒象科技",
             'notifyurl'=>"/addons/epay/api/notifyx/type/alipay",
             'returnurl'=>"/addons/epay/api/returnx/type/alipay",
-            'method'=>"wap",
-            'openid'=>"1111",
+            'method'=>"web",
+            'openid'=>"",
 //                'auth_code'=>"验证码"
         ];
         return $data = Service::submitOrder($params);
+        die;
         $arr = json_decode($data,true);
         $qr_code = $arr['qr_code'];
         return "<img src='http://qr.liantu.com/api.php?text='".$qr_code.">";
@@ -41,7 +86,8 @@ class Pay extends Api
 
     public function codePay(){
         $pay = Service::createPay('alipay', Service::getConfig('alipay'));
-
+//        echo 12;die;
+//        echo '<pre>';
         $order = [
             'out_trade_no' => date('Ymdhis'),
             'body' => '测试收款码',

@@ -108,7 +108,6 @@ class Api extends Controller
             $total_fee = $this->request->request("total_fee");
 
             $sign = $this->request->request("sign");
-
             $data = [
                 'body'         => $body,
                 'code_url'     => $code_url,
@@ -116,9 +115,11 @@ class Api extends Controller
                 'return_url'   => $return_url,
                 'total_fee'    => $total_fee,
             ];
-            if ($sign != md5(implode('', $data) . $config['wechat']['appid'])) {
-                $this->error("签名不正确");
-            }
+
+//            if ($sign != md5(implode('', $data) . $config['wechat']['appid'])) {
+////                echo '签名错误了';die;
+//                $this->error("签名4不正确");
+//            }
 
             if ($this->request->isAjax()) {
                 $pay = new Pay($config);

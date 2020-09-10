@@ -41,8 +41,10 @@ class Index extends Controller
     public function experience()
     {
         $amount = $this->request->request('amount');
-        $type = $this->request->request('type');
-        $method = $this->request->request('method');
+//        $type = $this->request->request('type');
+//        $method = $this->request->request('method');
+        $type = 'wechat';
+        $method = 'web';
 
         if (!$amount || $amount < 0) {
             $this->error("支付金额必须大于0");
@@ -56,13 +58,14 @@ class Index extends Controller
         $out_trade_no = date("YmdHis") . mt_rand(100000, 999999);
 
         //订单标题
-        $title = 'FastAdmin测试订单';
+        $title = '秒象科技-我的构件订单';
 
         //回调链接
         $notifyurl = $this->request->root(true) . '/addons/epay/index/notifyx/paytype/' . $type;
         $returnurl = $this->request->root(true) . '/addons/epay/index/returnx/paytype/' . $type . '/out_trade_no/' . $out_trade_no;
 
         return Service::submitOrder($amount, $out_trade_no, $type, $title, $notifyurl, $returnurl, $method);
+
     }
 
     /**
@@ -102,7 +105,8 @@ class Index extends Controller
         //你可以在这里通过out_trade_no去验证订单状态
         //但是不可以在此编写订单逻辑！！！
 
-        $this->success("请返回网站查看支付结果", addon_url("epay/index/index"));
+//        $this->success("请返回网站查看支付结果", addon_url("epay/index/index"));
+        $this->success("请返回网站查看支付结果", url("index/index/index"));
     }
 
 }

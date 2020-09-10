@@ -8,17 +8,17 @@ return array(
         'content' =>
             array(),
         'value'   => [
-            'appid'       => '', // APP APPID
-            'app_id'      => '', // 公众号 APPID
-            'app_secret'  => '', // 公众号 APPSECRET
+            'appid'       => '13771131002', // APP APPID
+            'app_id'      => 'wx979cd95eaef55175', // 公众号 APPID
+            'app_secret'  => '57e701c343accb165671bea3bd7c4d63', // 公众号 APPSECRET
             'miniapp_id'  => '', // 小程序 APPID
-            'mch_id'      => '', //支付商户ID
-            'key'         => '',
+            'mch_id'      => '1602569012', //支付商户ID
+            'key'         => '58eca2c55360c0f6d1f1e597492d4191',//秘钥32位（miaoxiang的MD5加密小写）
             'notify_url'  => '/addons/epay/api/notifyx/type/wechat', //请勿修改此配置
             'cert_client' => '/epay/certs/apiclient_cert.pem', // 可选, 退款，红包等情况时需要用到
             'cert_key'    => '/epay/certs/apiclient_key.pem',// 可选, 退款，红包等情况时需要用到
             'log'         => 1,
-            'mode'        => 'dev', // optional,设置此参数，将进入沙箱模式
+            'mode'        => '', // optional,设置此参数，将进入沙箱模式
         ],
         'rule'    => '',
         'msg'     => '',
