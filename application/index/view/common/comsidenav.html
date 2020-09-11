@@ -119,7 +119,7 @@
         <li class="nav-item nav-item4 {:$config['actionname']=='mylist'?'nav-show':''}">
             <a href="{:url('component/mylist')}"><i class="icon" style='background-image: url("{:$config['actionname']=='mylist'?'/assets/img/goujian-w.png':''}")'></i> <span>我的构件</span><i class="fa fa-angle-up nav-more"></i></a>
             <ul class="item-ul4">
-                <li><a href="javascript:;"><i class="item-icon item-icon1" style="{if condition="$config['actionname'] eq 'upload'"}background-image: url('/assets/img/upload-l.png'){/if}"></i> <span class="{if condition="$config['actionname'] eq 'upload'"}color-72D6E5{/if}">上传构件</span></a></li>
+                <li><a href="{:url('component/uploads')}"><i class="item-icon item-icon1" style="{if condition="$config['actionname'] eq 'upload'"}background-image: url('/assets/img/upload-l.png'){/if}"></i> <span class="{if condition="$config['actionname'] eq 'upload'"}color-72D6E5{/if}">上传构件</span></a></li>
                 <li><a href="javascript:;"><i class="item-icon item-icon2"></i> <span>专属企业码</span></a></li>
             </ul>
         </li>

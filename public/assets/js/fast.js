@@ -315,9 +315,9 @@ define(['jquery', 'bootstrap', 'toastr', 'layer', 'lang'], function ($, undefine
                     setting.url = Fast.api.fixurl(setting.url);
                 }
             });
-            Layer.config({
-                skin: 'layui-layer-fast'
-            });
+            // Layer.config({
+            //     skin: 'layui-layer-fast'
+            // });
             // 绑定ESC关闭窗口事件
             $(window).keyup(function (e) {
                 if (e.keyCode == 27) {

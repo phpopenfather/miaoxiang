@@ -7,6 +7,11 @@ namespace app\index\controller;
 use app\common\controller\Frontend;
 use app\common\library\Token;
 use app\common\model\UserFavoriteComponent;
+use think\controller;
+use think\Db;
+use think\Reques;
+use think\Validate;//引用验证器
+use think\facade\Request;
 
 /**
  * 部品构件
@@ -72,8 +77,98 @@ class Component extends Frontend
     public function upload()
     {
         $this->view->assign('title', __('Upload component'));
+        // var_dump('Upload component');
         return $this->view->fetch();
     }
+
+    /**
+     * 上传你的构件add
+     */
+
+        public function uploads()
+    {  
+        // 查询构件分类
+        $category=Db::table('fa_category')
+                        ->select();
+        
+        // 查询构件应用
+        $app=Db::table('fa_app')
+                        ->select();         
+        
+        // 添加构件
+        if(request()->isPost()){
+
+            // $array=$_POST['like'];
+            $array=$_POST['like'];
+            $str=implode(',',$array);//implode()函数将数组组合成字符串
+
+            $data=[
+
+                'category_id'=>input('category_id'),
+                'category_child_id'=>input('category_child_id'),
+                'name'=>input('name'),
+                'number'=>input('number'),
+                'size'=>input('size'),
+                'calculation'=>input('calculation'),
+                'materials'=>input('materials'),
+                'design'=>input('design'),
+                'price'=>input('price'),
+                'uploadto'=>input('uploadto'),
+                'app'=>$str,
+                'img'=>input('img'),
+
+
+            ];
+
+
+            // 上传文件
+            $file = request()->file('fbx');
+               if($file){                                       // 3dmax,fbx
+                $info = $file->validate(['size'=>209715200,'ext'=>'jpeg,png'])->move(ROOT_PATH . 'public' . DS . 'uploads/file');
+                if($info){
+                    // echo $info->getExtension();
+                $data ['file']='uploads/file'.date('Ymd').'/'.$info->getFilename();
+                 }else{
+                    // 上传失败获取错误信息
+                   return $this->error($file->getError());
+                }
+            }
+             // 上传图片
+            $img = request()->file('image');
+               if($img){
+                $info_img = $img->validate(['size'=>5242880,'ext'=>'jpeg,png'])->move(ROOT_PATH . 'public' . DS . 'uploads/img');
+                // var_dump($info);die;
+                if($info_img){
+                $data ['img']='uploads/img'.date('Ymd').'/'.$info_img->getFilename(); //$data向数据传递数据 ['img']img数据库字段名 在数据库重的名字 
+                   
+                }else{
+                    // 上传失败获取错误信息
+                   return $this->error($img->getError());
+                }
+            }
+                $db=Db::name('component_my')->insert($data);
+                if($db){
+
+                    return $this->success('成功','uploadss');
+                }else{
+                    return $this->error('失败','uploads');
+                  } 
+                    return $this->view->fetch();
+
+}
+            $this->assign('category',$category);
+            $this->assign('app',$app);
+            $this->view->assign('title', __('Uploads component'));
+            return $this->view->fetch();
+    
+ }
+
+
+    public function uploadss(){
+                    $this->view->assign('title', __('Uploadss component'));
+            return $this->view->fetch();
+    }
+     
 
     /**
      * 我的构件列表
