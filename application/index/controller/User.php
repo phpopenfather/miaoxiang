@@ -11,6 +11,7 @@ use think\Cookie;
 use think\Hook;
 use think\Session;
 use think\Validate;
+use think\Db;
 
 /**
  * 会员中心
@@ -264,6 +265,36 @@ class User extends Frontend
     public function profile()
     {
         $this->view->assign('title', __('Profile'));
+        return $this->view->fetch();
+    }
+
+    /**
+     * 企业申请
+     */
+    public function apply_co()
+    {
+        if ($this->request->isPost()) {
+            $company = $this->request->post("company");
+            $name = $this->request->post("name");
+            $phone = $this->request->post("phone");
+            $mail = $this->request->post("mail");
+            $apply_time = time(); //当前时间的时间戳
+
+            $data = [
+                $company,
+                $name,
+                $phone,
+                $mail,
+                $apply_time
+            ];
+            if ($data) {
+                Db::execute('insert into fa_apply_company (co_name,name,phone,mail,apply_time) values (?,?,?,?,?)',$data);
+                $this->success(__('企业申请成功！'), url('user/index'));
+            } else {
+                $this->error($this->auth->getError(), null, ['token' => $this->request->token()]);
+            }
+        }
+        $this->view->assign('title', __('Apply_co'));
         return $this->view->fetch();
     }
 

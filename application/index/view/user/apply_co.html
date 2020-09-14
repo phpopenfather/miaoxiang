@@ -1,0 +1,49 @@
+<div id="content-container" class="container">
+    <div class="row">
+        <div class="col-md-3">
+            {include file="common/sidenav" /}
+        </div>
+        <div class="col-md-9">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h2 class="page-header">{:__('企业申请')}</h2>
+                    <form id="changepwd-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+                        {:token()}
+                        <div class="form-group">
+                            <label for="company" class="control-label col-xs-12 col-sm-2">{:__('公司名称')}:</label>
+                            <div class="col-xs-12 col-sm-4">
+                                <input type="text" class="form-control" id="company" name="company" value="" data-rule="required" placeholder="申请公司全称">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="control-label col-xs-12 col-sm-2">{:__('申请人姓名')}:</label>
+                            <div class="col-xs-12 col-sm-4">
+                                <input type="text" class="form-control" id="name" name="name" value="" data-rule="required" placeholder="申请人姓名（负责人）" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="control-label col-xs-12 col-sm-2">{:__('申请人手机号')}:</label>
+                            <div class="col-xs-12 col-sm-4">
+                                <input type="text" class="form-control" id="phone" name="phone" value="" data-rule="required" placeholder="申请人手机号" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="mail" class="control-label col-xs-12 col-sm-2">{:__('申请人邮箱')}:</label>
+                            <div class="col-xs-12 col-sm-4">
+                                <input type="text" class="form-control" id="mail" name="mail" value="" data-rule="required" placeholder="申请人邮箱（申请通过后邮箱通知）" />
+                            </div>
+                        </div>
+
+                        <div class="form-group normal-footer">
+                            <label class="control-label col-xs-12 col-sm-2"></label>
+                            <div class="col-xs-12 col-sm-8">
+                                <button type="submit" class="btn btn-success btn-embossed">{:__('Submit')}</button>
+                                <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
