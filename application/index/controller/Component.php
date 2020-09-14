@@ -85,22 +85,24 @@ class Component extends Frontend
      * 上传你的构件add
      */
 
-        public function uploads()
-    {  
+    public function uploads(){  
         // 查询构件分类
-        $category=Db::table('fa_category')
-                        ->select();
-        
+        $this->getProvince();
+        $this->getCity();
         // 查询构件应用
         $app=Db::table('fa_app')
                         ->select();         
         
         // 添加构件
-        if(request()->isPost()){
 
-            // $array=$_POST['like'];
-            $array=$_POST['like'];
-            $str=implode(',',$array);//implode()函数将数组组合成字符串
+        if(request()->isPost()){
+            // 判断应用
+            if(!isset($_POST['like'])){
+                $str='';
+            }else{
+                $array=$_POST['like'];
+                $str=implode(',',$array);//implode()函数将数组组合成字符串
+            }
 
             $data=[
 
@@ -109,25 +111,23 @@ class Component extends Frontend
                 'name'=>input('name'),
                 'number'=>input('number'),
                 'size'=>input('size'),
-                'calculation'=>input('calculation'),
-                'materials'=>input('materials'),
-                'design'=>input('design'),
+                'rules'=>input('rules'),
                 'price'=>input('price'),
                 'uploadto'=>input('uploadto'),
                 'app'=>$str,
-                'img'=>input('img'),
-
+                'apps'=>input('apps'),
+                'user_id'=>input('user_id'),
 
             ];
 
 
             // 上传文件
-            $file = request()->file('fbx');
+            $file = request()->file('attachfile');
                if($file){                                       // 3dmax,fbx
-                $info = $file->validate(['size'=>209715200,'ext'=>'jpeg,png'])->move(ROOT_PATH . 'public' . DS . 'uploads/file');
+                $info = $file->validate(['size'=>209715200,'ext'=>'3dmax,fbx,png'])->move(ROOT_PATH . 'public' . DS . 'uploads');
                 if($info){
                     // echo $info->getExtension();
-                $data ['file']='uploads/file'.date('Ymd').'/'.$info->getFilename();
+                $data ['attachfile']='/uploads'.date('Ymd').'/'.$info->getFilename();
                  }else{
                     // 上传失败获取错误信息
                    return $this->error($file->getError());
@@ -136,27 +136,27 @@ class Component extends Frontend
              // 上传图片
             $img = request()->file('image');
                if($img){
-                $info_img = $img->validate(['size'=>5242880,'ext'=>'jpeg,png'])->move(ROOT_PATH . 'public' . DS . 'uploads/img');
+                $info_img = $img->validate(['size'=>5242880,'ext'=>'jpeg,png'])->move(ROOT_PATH . 'public' . DS . 'uploads');
                 // var_dump($info);die;
                 if($info_img){
-                $data ['img']='uploads/img'.date('Ymd').'/'.$info_img->getFilename(); //$data向数据传递数据 ['img']img数据库字段名 在数据库重的名字 
+                $data ['image']='/uploads/'.date('Ymd').'/'.$info_img->getFilename(); //$data向数据传递数据 ['img']img数据库字段名 在数据库重的名字 
                    
                 }else{
                     // 上传失败获取错误信息
                    return $this->error($img->getError());
                 }
             }
-                $db=Db::name('component_my')->insert($data);
-                if($db){
+                $db=Db::name('component')->insert($data);
+                // if($db){
 
-                    return $this->success('成功','uploadss');
-                }else{
-                    return $this->error('失败','uploads');
-                  } 
-                    return $this->view->fetch();
+                //     return $this->success('成功','uploadss');
+                // }else{
+                //     return $this->error('失败','uploads');
+                //   } 
+                    return $this->view->fetch('uploadss');
 
 }
-            $this->assign('category',$category);
+            // $this->assign('category',$category);
             $this->assign('app',$app);
             $this->view->assign('title', __('Uploads component'));
             return $this->view->fetch();
@@ -164,10 +164,29 @@ class Component extends Frontend
  }
 
 
-    public function uploadss(){
-                    $this->view->assign('title', __('Uploadss component'));
-            return $this->view->fetch();
-    }
+    // 构件父级分类条件
+    public function getProvince(){
+        // 查询父级条件
+        $category = Db::query("select * from fa_category where type = 'component' and id = 14 or id = 16 or id = 17");
+                            $this->assign('category',$category);
+             }
+    // 构件子级分类条件
+    public function getCity(){
+        $city =Db::query("select * from fa_category where type = 'component'");
+        // 交互状态 要用json格式
+        // return json([
+        //     'status' => 200,
+        //     'msg'    => '获取成功',
+        //     'data'   => $city
+        // ]);
+        $this->assign('city',$city);
+     }
+
+
+    // public function uploadss(){
+    //         $this->view->assign('title', __('Uploadss component'));
+    //         return $this->view->fetch();
+    // }
      
 
     /**
@@ -184,6 +203,7 @@ class Component extends Frontend
 
         // 构件列表
         $sort = $this->request->get("sort", "createtime");
+                // var_dump($sort);die;     
         $order = $this->request->get("order", "DESC");
         $offset = $this->request->get("offset", 0);
         $category = $this->request->get("category_id");
@@ -207,6 +227,10 @@ class Component extends Frontend
 
         $this->view->assign('title', __('My component'));
         return $this->view->fetch();
+    }
+
+    public function upMlist(){
+
     }
 
     /**

@@ -350,10 +350,16 @@
         font-size: 50px;
          color:red; 
     }
+    .wb{
+        width: 670px;
+        height: 100px;
+        margin-left: 60px;
+        margin-top: -40px
+    }
     /*上传*/
     .explain-a{
-        margin-left: 275px;
-        margin-top: -66px;
+        margin-left: 167px;
+        margin-top: -10px;
         color: #868F91;
     }
     .sc{
@@ -371,15 +377,26 @@
        margin-top: -69px;
     }
     .explain-b{
-        margin-left: 365px;
-        margin-top: -90px;
+        margin-left: 170px;
+        margin-top: 7px;
         color: #868F91;
     }
     .yy{
         margin-left: 11px;
         margin-top: 10px;
     }
-
+    .wj{
+        margin-left: 170px;
+        /*display: none;*/
+    }
+    .p{
+        margin-left: 170px;
+        margin-top: 1px;
+    }
+        .pp{
+        margin-left: 170px;
+        margin-top: -1px;
+    }
     
 
     .op {
@@ -466,14 +483,14 @@
                                 <select name="category_id" class="gj">
                                     <option value="" name="category_id" class="classify">请选择</option>
                                     {foreach $category as $v}
-                                    <option value="{$v.name}" id="en" name="categoryid" class="classify">{$v.name}</option>
+                                    <option value="{$v.id}" id="en" name="category_id" class="classify">{$v.name}</option>
                                     {/foreach}
                                 </select>
 
                                 <select name="category_child_id" class="gj-a">
-                                    <option value="" name="categorypid" class="classify">请选择</option>
-                                     {foreach $category as $v}
-                                    <option value="{$v.name}" id="en" name="categorypid" class="classify">{$v.name}</option>
+                                    <option value="" name="category_child_id" class="classify">请选择</option>
+                                     {foreach $city as $v}
+                                    <option value="{$v.id}" id="en" name="category_child_id" class="classify">{$v.name}</option>
                                     {/foreach}
                                 </select>
                              
@@ -502,22 +519,29 @@
                         </div>
                         <!-- 算量规则 -->
                         <div class="layui-form-item-b-3">
-                            <label class="layui-form-label-a">算量规则</label>
-                              <input type="text" name="calculation" lay-verify="title" autocomplete="off" placeholder="请输入算量规则" class="layui-input-a">
-                              <span id="calculation-text" class="text-small">
-                        </div>
+                            <label class="layui-form-label-a">构件规则</label>
+                            <div class="layui-form-item layui-form-text">
+                                <div class="layui-input-block">
+                                  <textarea class="wb" name="rules" placeholder="请输入内容" class="layui-textarea"></textarea>
+                                </div>
+                              <!-- <input type="text" name="calculation" lay-verify="title" autocomplete="off" placeholder="请输入算量规则" class="layui-input-a"> -->
+                              <!-- <span id="calculation-text" class="text-small"> -->
+                            </div>
                         <!-- 用料规则 -->
-                        <div class="layui-form-item-b-4">
+<!--                         <div class="layui-form-item-b-4">
                             <label class="layui-form-label-a">用料规则</label>
-                              <input type="text" name="materials" lay-verify="title" autocomplete="off" placeholder="请输入用料规则" class="layui-input-a">
-                              <span id="materials-text" class="text-small">
-                        </div>
+                                <div class="layui-input-block">
+                                  <textarea class="wb" name="materials" placeholder="请输入内容" class="layui-textarea"></textarea>
+                                </div>
+                        </div> -->
                         <!-- 设计规则 -->
-                        <div class="layui-form-item-b-5">
+<!--                         <div class="layui-form-item-b-5">
                             <label class="layui-form-label-a">设计规则</label>
-                              <input type="text" name="design" lay-verify="title" autocomplete="off" placeholder="请输入设计规则" class="layui-input-a">
-                              <span id="design-text" class="text-small">
-                        </div>
+                                <div class="layui-input-block">
+                                  <textarea class="wb" name="design" placeholder="请输入内容" class="layui-textarea"></textarea>
+                                </div>
+
+                        </div> -->
                         <!-- 构件价格 -->
                         <div class="layui-form-item-b-6">
                             <label class="layui-form-label-a">构件价格</label>
@@ -530,37 +554,30 @@
                             <div style="margin-left: 150px;margin-top: -31px;">
                               <div style="font-size:14pt;">
                                 <input type="radio" name="uploadto" value="1" checked class="anniu" style="font-size:14pt;">秒象空间
+                                <input type="radio" value="1"  checked name="user_id" style="display: none;">
                               </div>   
                             </div>
                         </div>
+
                          <!-- 文件上传 -->
+                         <div style="margin-top: 1px">
                          <p style="font-size:16pt; font-weight:100; margin-left: 39pt; margin-top: 22pt; ">文件上传</p>
-                                <input type="file" name="fbx"/> <br>                        
-<!--                         <div class="explain-a">
-                            <div>
-                              单个文件大小不超过200m
-                            </div>
-                            <div>
-                              支持 3dmax、fbx文件格式； 
-                            </div>
-                        </div>
- -->
+                                <input class="wj" type="file" name="attachfile"/> <br>    
+                                 <p class="pp">
+                               单个文件大小不超过200m 支持 3dmax、fbx文件格式；
+                               </p>                    
+
+                         </div>
                         <!-- 上传图片   -->
-                        <p style="font-size:16pt; font-weight:100; margin-left: 39pt; margin-top: 35pt; ">图片上传</p>
-                             <div class="img">
-                                <div>
-                              <input type="file" name="image" /> 
-                              </div>
-                              </div>
-                       <!--  <div class="explain-b">
-                          <div>
-                            单个文件大小不超过200m
-                          </div>
-                          <div>
-                            支持 3dmax、fbx文件格式； 
-                          </div>
+                        <div>
+                        <p style="font-size:16pt; font-weight:100; margin-left: 39pt; margin-top: 22pt; ">图片上传</p>
+ 
+
+                              <input class="wj" type="file" name="image" /> 
+                          <p class="p">
+                              单个文件大小不超过200m 支持 jpeg、png文件格式；
+                          </p>
                         </div>
-                         -->
                         
                         <!-- 可应用在 -->
                         <div class="title-a" style="margin-top: 30px ; ">
@@ -575,11 +592,19 @@
                                    </label>
                                    {/foreach}
                                 </div>
-
+                        <!-- 可应用在添加 -->
+                             <div class="layui-form-item-b" style="margin-top: -30px;">
+                            <label class="layui-form-label-a" style="margin-left: 170px; font-size:15pt;">增加应用</label>
+                              <input style="width: 300px;height: 25px;font-size:10pt; margin-left: 10px" type="text" name="apps" lay-verify="title" autocomplete="off" placeholder="请输入应用名称" class="layui-input-a">
+                              <span id="name-text" class="text-small">
+                          <!-- 请输入数字字母下划线5-12位 -->
+                          </span>
+                        </div>
+                       
                         <!-- 提交 -->
                           <div class="layui-form-item" style="margin-top: 70px;margin-left: 250px">
                             <div class="layui-input-a-block">
-                              <button type="reset" class="layui-btn layui-btn-primary">取消</button>
+                              <a href="{:url('component/mylist')}" type="reset" class="layui-btn layui-btn-primary">取消</a>
                               <button  class="layui-btn" type="submit" lay-filter="demo1" id="btn-primary" style="background :#72D6E5; ">提交审核</button>
                             </div>
                           </div>
@@ -591,11 +616,12 @@
     </div>
 </div>
 <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
 <!-- <script src="__CDN__/assets/layui/layui.js"></script> -->
 
 <script type="text/javascript"></script>
 
-<script>
+<script type="text/javascript">
     // 正则表达式
 
 var data = {
@@ -614,19 +640,19 @@ var data = {
     text:'*请输入正确标准尺寸*'
   },
 
-    calculation : {
-    reg:/^.{1,20}$/,
-    text:'*请输入正确算量规则*'
-  },
+  //   calculation : {
+  //   reg:/^.{1,20}$/,
+  //   text:'*请输入正确算量规则*'
+  // },
 
-    materials : {
-    reg:/^.{1,20}$/,
-    text:'*请输入正确用料规则*'
-  },
-    design : {
-    reg:/^.{1,20}$/,
-    text:'*请输入正确设计规则*'
-  },
+  //   materials : {
+  //   reg:/^.{1,20}$/,
+  //   text:'*请输入正确用料规则*'
+  // },
+  //   design : {
+  //   reg:/^.{1,20}$/,
+  //   text:'*请输入正确设计规则*'
+  // },
     price : {
     reg:/^(\+)?\d+(\.\d+)?$/,
     text:'*请输入正确数字金额类型*'
@@ -660,15 +686,15 @@ $('[name="number"]').blur(function(){
 $('[name="size"]').blur(function(){
        checkText('size')
     })
-$('[name="calculation"]').blur(function(){
-       checkText('calculation')
-    })
-$('[name="materials"]').blur(function(){
-       checkText('materials')
-    })
-$('[name="design"]').blur(function(){
-       checkText('design')
-    })
+// $('[name="calculation"]').blur(function(){
+//        checkText('calculation')
+//     })
+// $('[name="materials"]').blur(function(){
+//        checkText('materials')
+//     })
+// $('[name="design"]').blur(function(){
+//        checkText('design')
+//     })
 $('[name="price"]').blur(function(){
        checkText('price')
     })
@@ -684,11 +710,7 @@ $('[type="submit"]').click(function(){
    if(!checkText('name') ||
     !checckText('number')||
     !checckText('size')||
-    !checckText('calculation')||
-    !checckText('materials')||
-    !checckText('design')||
-    !checckText('price')||
-    !checckText('like[]')
+    !checckText('price')
 
    ){
     alert('完善')
