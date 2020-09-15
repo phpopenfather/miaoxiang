@@ -18,7 +18,7 @@ class Message extends Api
     //如果接口已经设置无需登录,那也就无需鉴权了
     //
     // 无需登录的接口,*表示全部
-    protected $noNeedLogin = [];
+    protected $noNeedLogin = ['*'];
     // 无需鉴权的接口,*表示全部
     protected $noNeedRight = '*';
     // Child模型对象
@@ -204,5 +204,45 @@ class Message extends Api
             }
         }
         return false;
+    }
+
+    //根据企业申请id，消息发送接口
+    public function apply_company_msg(){
+
+        $send_id = $this->auth->id;
+        if (!$send_id){
+            $this->error("用户未登录");
+        }
+
+        $company_id = $this->request->request('company_id');
+        $nickname = Db::query('select * from fa_apply_company where id=?',[$company_id]);
+        if (empty($nickname[0]['co_name'])){
+            $this->error("接收人不存在,请修改接收人昵称！");
+        }else{
+            $result = DB::name('user')->where('nickname','like',"%".$nickname[0]['co_name']."%")->select();
+        }
+
+        $title = $this->request->post('title');
+        $content = $this->request->post('content');
+        $message_annex = $this->request->post('annex');
+        $lable = $this->request->post('lable');
+        $type = $this->request->post('type');
+        $extraction_code = $this->request->post('extraction_code');
+        if(!$message_annex) { $message_annex = null; }
+
+        if (!$title || !$content){
+            $this->error("内容或标题为空！");
+        }
+        // 验证接收用户
+        foreach ($result as $arr){
+            $receive_num = $arr['mobile'];
+            $receive_id = User::where('mobile',$receive_num)->value('id');
+            if(!$receive_id){
+                $this->error("接收人不存在！");
+            }
+            $params = [$receive_id, $send_id, 'user', $title, $content, $message_annex, $lable, $type, $extraction_code];
+            $this->send($params);
+        }
+        $this->success('发送成功');
     }
 }
