@@ -273,7 +273,7 @@ class User extends Frontend
      */
     public function apply_co()
     {
-        $send_user_id = $this->auth->id;
+        $send_user_nickname = $this->auth->nickname;
         if ($this->request->isPost()) {
             $company = $this->request->post("company");
             $name = $this->request->post("name");
@@ -282,7 +282,7 @@ class User extends Frontend
             $apply_time = time(); //当前时间的时间戳
 
             $data = [
-                $send_user_id,
+                $send_user_nickname,
                 $company,
                 $name,
                 $phone,
@@ -290,7 +290,7 @@ class User extends Frontend
                 $apply_time
             ];
             if ($data) {
-                Db::execute('insert into fa_apply_company (send_user_id,co_name,name,phone,mail,apply_time) values (?,?,?,?,?,?)',$data);
+                Db::execute('insert into fa_apply_company (send_user_nickname,co_name,name,phone,mail,apply_time) values (?,?,?,?,?,?)',$data);
                 $this->success(__('企业申请成功！'), url('user/index'));
             } else {
                 $this->error($this->auth->getError(), null, ['token' => $this->request->token()]);

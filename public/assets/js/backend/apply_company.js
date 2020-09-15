@@ -26,6 +26,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     [
                         {checkbox: true},
                         {field: 'id', title: __('Id')},
+                        {field: 'send_user_nickname', title: __('Send_user_nickname')},
                         {field: 'co_name', title: __('Co_name')},
                         {field: 'name', title: __('Name')},
                         {field: 'phone', title: __('Phone')},
