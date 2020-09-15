@@ -183,10 +183,20 @@ class Component extends Frontend
      }
 
 
-    // public function uploadss(){
-    //         $this->view->assign('title', __('Uploadss component'));
-    //         return $this->view->fetch();
-    // }
+    public function uploadss(){
+            $this->view->assign('title', __('Uploadss component'));
+            return $this->view->fetch();
+    }
+
+
+    public function enterprise(){
+
+        
+
+         $this->view->assign('title', __('enterprise component'));
+         return $this->view->fetch();
+
+    }
      
 
     /**
