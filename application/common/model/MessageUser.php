@@ -89,17 +89,31 @@ class MessageUser extends Model
     public function getMessageDetails($rec_id)
     {
         $where = ['rec_id' => $rec_id];
-        $info = $this->with(['messagenotice','senduser'])->where($where)->find();
+        $info = $this->with(['messagenotice', 'senduser'])->where($where)->find();
         if ($info) {
-            $info->visible(['rec_id','user_id','message_id','is_see','deleted','createtime']);
+            $info->visible(['rec_id', 'user_id', 'message_id', 'is_see', 'deleted', 'createtime']);
             $info->visible(['messagenotice']);
-            $info->getRelation('messagenotice')->visible(['message_type', 'message_title', 'message_content', 'message_annex', 'lable','type', 'extraction_code']);
+            $info->getRelation('messagenotice')->visible(['message_type', 'message_title', 'message_content', 'message_annex', 'lable', 'type', 'extraction_code']);
             $info->visible(['senduser']);
-            $info->getRelation('senduser')->visible(['id','username', 'mobile']);
+            $info->getRelation('senduser')->visible(['id', 'username', 'mobile']);
 
             if ($info && $info['is_see'] == 2) {
                 $this->setMessageForRead($info['rec_id'], $info['user_id']);//设置消息已读
             }
+        }
+
+        //将数据表中的contentjson数据转化为web html形式
+        $json_content = $info->origin['messagenotice__message_content'];
+        if (!empty(json_decode($json_content))) {
+            {
+                $con = null;
+                foreach (json_decode($json_content) as $d) {
+                    $d = (array)$d;
+                    $con .= $d['component_name'] . '&nbsp&nbsp&nbsp&nbsp' . $d['component_size'] . '&nbsp&nbsp&nbsp&nbsp' . $d['component_sum'] . '&nbsp&nbsp&nbsp&nbsp' . $d['component_price'] . '&nbsp<br />';
+                }
+                $content = '结构件名称 &nbsp; 结构件规格 &nbsp;结构件数量&nbsp;结构件价格&nbsp;<br />' . $con;
+            }
+            $info->relation['messagenotice']->data['message_content'] = $content;
         }
         return $info;
     }

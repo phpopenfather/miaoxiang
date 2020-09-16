@@ -242,21 +242,21 @@ class Message extends Api
         }
 
         $title = $this->request->post('title');
-
         $data = $this->request->post()['data'];
 
 
-        $con = null;
-        foreach ($data as $d){
-            $con .= $d['component_name'].'&nbsp&nbsp&nbsp&nbsp'.$d['component_size'].'&nbsp&nbsp&nbsp&nbsp'.$d['component_sum'].'&nbsp&nbsp&nbsp&nbsp'.$d['component_price'].'&nbsp<br />';
-        }
-
-//        $component_name = $this->request->post('component_name');
-//        $component_size = $this->request->post('component_size');
-//        $component_sum = $this->request->post('component_sum');
-//        $component_price = $this->request->post('component_price');
-
-        $content = '结构件名称 &nbsp; 结构件规格 &nbsp;结构件数量&nbsp;结构件价格&nbsp;<br />'.$con;
+//        $con = null;
+//        foreach ($data as $d){
+//            $con .= $d['component_name'].'&nbsp&nbsp&nbsp&nbsp'.$d['component_size'].'&nbsp&nbsp&nbsp&nbsp'.$d['component_sum'].'&nbsp&nbsp&nbsp&nbsp'.$d['component_price'].'&nbsp<br />';
+//        }
+//
+////        $component_name = $this->request->post('component_name');
+////        $component_size = $this->request->post('component_size');
+////        $component_sum = $this->request->post('component_sum');
+////        $component_price = $this->request->post('component_price');
+//
+//        $content = '结构件名称 &nbsp; 结构件规格 &nbsp;结构件数量&nbsp;结构件价格&nbsp;<br />'.$con;
+        $content = json_encode($data);
         $message_annex = null;
         $lable = 1;
         $type = 0;
