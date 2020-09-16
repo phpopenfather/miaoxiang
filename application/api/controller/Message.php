@@ -233,7 +233,7 @@ class Message extends Api
             $this->error("用户未登录");
         }
 
-        $company_id = $this->request->request('company_id');
+        $company_id = $this->request->post('company_id');
         $nickname = Db::query('select * from fa_apply_company where id=?',[$company_id]);
         if (empty($nickname[0]['co_name'])){
             $this->error("该项目接收人不存在,请输入正确企业id！");
@@ -243,7 +243,8 @@ class Message extends Api
 
         $title = $this->request->post('title');
 
-        $data = $this->request->post('data');
+        $data = $this->request->post()['data'];
+
 
         $con = null;
         foreach ($data as $d){
