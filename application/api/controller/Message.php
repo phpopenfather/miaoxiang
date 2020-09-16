@@ -206,7 +206,26 @@ class Message extends Api
         return false;
     }
 
-    //根据企业申请id，消息发送接口
+    /**根据企业申请id，消息发送接口
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     * ['company_id' => '1',
+    'data' => [
+    [
+    'component_name' => 'dfasdf',
+    'component_size' => 'dsfads',
+    'component_sum' => 'dfsadf',
+    'component_price' => 'sadfasdf'
+    ],
+    [
+    'component_name' => 'dfasdf',
+    'component_size' => 'dsfads',
+    'component_sum' => 'dfsadf',
+    'component_price' => 'sadfasdf'
+    ]
+    ]];
+     */
     public function apply_company_msg(){
 
         $send_id = $this->auth->id;
@@ -217,32 +236,49 @@ class Message extends Api
         $company_id = $this->request->request('company_id');
         $nickname = Db::query('select * from fa_apply_company where id=?',[$company_id]);
         if (empty($nickname[0]['co_name'])){
-            $this->error("接收人不存在,请修改接收人昵称！");
+            $this->error("该项目接收人不存在,请输入正确企业id！");
         }else{
             $result = DB::name('user')->where('nickname','like',"%".$nickname[0]['co_name']."%")->select();
         }
 
         $title = $this->request->post('title');
-        $content = $this->request->post('content');
-        $message_annex = $this->request->post('annex');
-        $lable = $this->request->post('lable');
-        $type = $this->request->post('type');
-        $extraction_code = $this->request->post('extraction_code');
-        if(!$message_annex) { $message_annex = null; }
+
+        $data = $this->request->post('data');
+
+        $con = null;
+        foreach ($data as $d){
+            $con .= $d['component_name'].'&nbsp&nbsp&nbsp&nbsp'.$d['component_size'].'&nbsp&nbsp&nbsp&nbsp'.$d['component_sum'].'&nbsp&nbsp&nbsp&nbsp'.$d['component_price'].'&nbsp<br />';
+        }
+
+//        $component_name = $this->request->post('component_name');
+//        $component_size = $this->request->post('component_size');
+//        $component_sum = $this->request->post('component_sum');
+//        $component_price = $this->request->post('component_price');
+
+        $content = '结构件名称 &nbsp; 结构件规格 &nbsp;结构件数量&nbsp;结构件价格&nbsp;<br />'.$con;
+        $message_annex = null;
+        $lable = 1;
+        $type = 0;
+        $extraction_code = null;
 
         if (!$title || !$content){
             $this->error("内容或标题为空！");
         }
         // 验证接收用户
-        foreach ($result as $arr){
-            $receive_num = $arr['mobile'];
-            $receive_id = User::where('mobile',$receive_num)->value('id');
-            if(!$receive_id){
-                $this->error("接收人不存在！");
+        if(empty($result)){
+            $this->error("接收人不存在,请修改接收人昵称！");
+        }else{
+            foreach ($result as $arr){
+                $receive_num = $arr['mobile'];
+                $receive_id = User::where('mobile',$receive_num)->value('id');
+                if(!$receive_id){
+                    $this->error("接收人不存在！");
+                }
+                $params = [$receive_id, $send_id, 'user', $title, $content, $message_annex, $lable, $type, $extraction_code];
+                $this->send($params);
             }
-            $params = [$receive_id, $send_id, 'user', $title, $content, $message_annex, $lable, $type, $extraction_code];
-            $this->send($params);
         }
+
         $this->success('发送成功');
     }
 }
