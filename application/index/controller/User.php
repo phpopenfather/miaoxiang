@@ -144,10 +144,30 @@ class User extends Frontend
                 $this->error(__($validate->getError()), null, ['token' => $this->request->token()]);
             }
             if ($this->auth->register($username, $password, $email, $mobile)) {
+
+                //企业码入表
+                $co_code = $this->request->post('co_code');
+                $position = $this->request->post('position');
+                if(!empty($co_code)){
+                    //给新用户修改企业码
+                    Db::table('fa_user')->where('mobile',$mobile)->update(['co_code'=>$co_code]);
+                    //查询所属企业名称
+                    $company_info = Db::query('select * from fa_apply_company where co_code=?',[$co_code]);
+                    //查询用户信息
+                    $user_info = Db::query('select * from fa_user where mobile=?',[$mobile]);
+                    //给新用户修改昵称
+                    if(!empty($position)){
+                        Db::table('fa_user')->where('mobile',$mobile)->update(['nickname'=>$company_info[0]['co_name'].'-'.$position.'-'.$user_info[0]['username']]);
+                    }else{
+                        Db::table('fa_user')->where('mobile',$mobile)->update(['nickname'=>$company_info[0]['co_name'].'-'.$user_info[0]['username']]);
+                    }
+                }
                 $this->success(__('Sign up successful'), $url ? $url : url('user/index'));
             } else {
                 $this->error($this->auth->getError(), null, ['token' => $this->request->token()]);
             }
+
+
         }
         //判断来源
         $referer = $this->request->server('HTTP_REFERER');

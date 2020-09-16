@@ -65,6 +65,9 @@ class Message extends Api
     {
         $user = $this->auth->getUser();
         $is_see = $this->request->request('is_see');
+
+        //客户端content内容给他从json格式转化为array格式
+//        $return = $this->model->getList($user->id, '', $is_see);
         $this->success('返回成功', $this->model->getList($user->id, '', $is_see));
     }
 
@@ -234,11 +237,11 @@ class Message extends Api
         }
 
         $company_id = $this->request->post('company_id');
-        $nickname = Db::query('select * from fa_apply_company where id=?',[$company_id]);
-        if (empty($nickname[0]['co_name'])){
-            $this->error("该项目接收人不存在,请输入正确企业id！");
+        $co_code = Db::query('select * from fa_apply_company where co_code=?',[$company_id]);
+        if (empty($co_code)){
+            $this->error("该项目申请码不存在,请输入正确企业申请码！");
         }else{
-            $result = DB::name('user')->where('nickname','like',"%".$nickname[0]['co_name']."%")->select();
+            $result = DB::name('user')->where('co_code','like',"%".$company_id."%")->select();
         }
 
         $title = $this->request->post('title');
