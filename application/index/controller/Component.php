@@ -91,10 +91,21 @@ class Component extends Frontend
         $this->getCity();
         // 查询构件应用
         $app=Db::table('fa_app')
-                        ->select();         
+                        ->select();     
+
+        $token = $this->request->post('__token__');
+        //验证Token
+        if (!$token || !\think\Validate::is($token, "token", ['__token__' => $token])) {
+            // $this->error("请勿非法请求");
+        }
+        // 用户toke获取用户ID
+        $user_token = $this->auth->getToken();
+        if(!$user_token || !Token::get($user_token)){
+            $this->error("用户未登录");
+        }
+        $user_id = Token::get($user_token)['user_id'];    
         
         // 添加构件
-
         if(request()->isPost()){
             // 判断应用
             if(!isset($_POST['like'])){
@@ -116,7 +127,7 @@ class Component extends Frontend
                 'uploadto'=>input('uploadto'),
                 'app'=>$str,
                 'apps'=>input('apps'),
-                'user_id'=>input('user_id'),
+                'user_id'=>$user_id
 
             ];
 
@@ -124,7 +135,7 @@ class Component extends Frontend
             // 上传文件
             $file = request()->file('attachfile');
                if($file){                                       // 3dmax,fbx
-                $info = $file->validate(['size'=>209715200,'ext'=>'3dmax,fbx,png'])->move(ROOT_PATH . 'public' . DS . 'uploads');
+                $info = $file->validate(['size'=>209715200,'ext'=>'3dmax,fbx'])->move(ROOT_PATH . 'public' . DS . 'uploads');
                 if($info){
                     // echo $info->getExtension();
                 $data ['attachfile']='/uploads'.date('Ymd').'/'.$info->getFilename();
