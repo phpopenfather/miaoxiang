@@ -4,6 +4,7 @@ namespace app\admin\controller\user;
 
 use app\common\controller\Backend;
 use app\common\library\Auth;
+use think\Db;
 
 /**
  * 会员管理
@@ -40,6 +41,11 @@ class User extends Backend
                 return $this->selectpage();
             }
             list($where, $sort, $order, $offset, $limit) = $this->buildparams();
+            //获取当前登录人的权限
+//            $login_id = $this->auth->id;
+//            $login_user_info = Db::query('select * from fa_user where id=?',[$login_id]);
+//            $co_code = $login_user_info[0]['co_code'];
+
             $total = $this->model
                 ->with('group')
                 ->where($where)
@@ -51,10 +57,16 @@ class User extends Backend
                 ->order($sort, $order)
                 ->limit($offset, $limit)
                 ->select();
+
+//            dump((array)$list[0]["0*\0data"]);die;
             foreach ($list as $k => $v) {
                 $v->hidden(['password', 'salt']);
             }
             $result = array("total" => $total, "rows" => $list);
+
+//            $test = (array)$result->data['rows'];
+//            echo'<pre>';
+//            print_r($result['rows']);die;
 
             return json($result);
         }
