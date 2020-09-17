@@ -158,7 +158,7 @@ class Message extends Api
         if(!$message_annex) { $message_annex = null; }
 
         // 验证接收用户
-        $receive_id = User::where('mobile',$receive_num)->value('id');
+        $receive_id = User::where('mobile',$receive_num)->whereOr('username',$receive_num)->value('id');
         if(!$receive_id){
             $this->error("接收人不存在！");
         }
