@@ -151,6 +151,7 @@ class User extends Frontend
                 if(!empty($co_code)){
                     //给新用户修改企业码
                     Db::table('fa_user')->where('mobile',$mobile)->update(['co_code'=>$co_code]);
+                    Db::table('fa_user')->where('mobile',$mobile)->update(['position'=>$position]);
                     //查询所属企业名称
                     $company_info = Db::query('select * from fa_apply_company where co_code=?',[$co_code]);
                     //查询用户信息

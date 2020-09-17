@@ -7,6 +7,7 @@ use app\common\library\Ems;
 use app\common\library\Sms;
 use fast\Random;
 use think\Validate;
+use think\DB;
 
 /**
  * 会员接口
@@ -39,12 +40,20 @@ class User extends Api
     {
         $account = $this->request->request('account');
         $password = $this->request->request('password');
+
         if (!$account || !$password) {
             $this->error(__('Invalid parameters'));
         }
         $ret = $this->auth->login($account, $password);
         if ($ret) {
-            $data = ['userinfo' => $this->auth->getUserinfo()];
+            //获取用户id
+            $id = $this->auth->getUserinfo()['id'];
+            $user_info = Db::query('select * from fa_user where id=?',[$id]);
+            $get_user_info = $this->auth->getUserinfo();
+            //返回信息加上用户职位
+            $get_user_info['position'] = $user_info[0]['position'];
+
+            $data = ['userinfo' => $get_user_info];
             $this->success(__('Logged in successful'), $data);
         } else {
             $this->error($this->auth->getError());
