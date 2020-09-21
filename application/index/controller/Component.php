@@ -127,6 +127,7 @@ class Component extends Frontend
                 'uploadto'=>input('uploadto'),
                 'app'=>$str,
                 'apps'=>input('apps'),
+                'createtime'=>time(),
                 'user_id'=>$user_id
 
             ];

@@ -43,6 +43,7 @@
         margin-bottom: 2px !important;
         padding-bottom: 28px !important;
         border-bottom: 2px solid #F5F5F5;
+        float: left;
     }
     .list-nav{
         padding: 0 10px;
@@ -279,12 +280,99 @@
     .layui-btn{
         margin-left: 100px;
     }
+    .page-header-a{
+        margin-top: 15px;
+    }
+    .people{
+        margin-left: 8px;
+         font-size: 18px;
+         color: #3A3C3C;
+         float: left;
+    }
+    
+    .c-ssk{
+      margin-top: -8px;
+      margin-left:700px;
+/*      width: 261px;
+      height: 41px;
+      border: 1px solid red*/
 
+    }
+    .ssk{
+       width: 260px;
+       height: 40px;
+       text-indent: 50px;
+       font-size: 15px
+    }
 
+    /*按钮*/
+    .anniu{
+        margin-top: 19px;
+        /*height: 83px;*/
+    }
+    .xl{
+        background-color: #ffff;
+        color: #979797;
+        border: 1px solid #979797;
+        width: 120px;
+        height: 40px;
+        margin-left:856px;
+        margin-top: -40px;
+        font-size:15px;
+        text-indent: 10px;
+    }
+    .line{
+        height: 40px;
+        border: 1px solid #F9FAFC;
+        background-color: #F9FAFC;
+        margin-top: 26px;
+    }
+    .layui-form-item-a{
+        margin-left: 22px;
+        margin-top: 8.5px;
+        float: left;
+    }
+    .name{
+        font-size: 16px;
+        color: #979797;
+        float: left;
+        margin-top: 9.5px;
+        margin-left:24px;
+    }
+    .name-a{
+        width: 132px;
+        font-size: 16px;
+        color: #979797;
+        float: left;
+        margin-top: 9.5px;
+        margin-left:24px;
+        
+    }
+    .title-a{
+        font-size: 16px;
+        color: #979797;
+        float: left;
+        margin-top: 9.5px;
+        margin-left:154px;
+    }
+    .title-b{
+        width: 140px;
+        height: 22px;
+        font-size: 16px;
+        color: #979797;
+        float: left;
+        margin-top: 9.5px;
+        text-align: center;
+        /*margin-left:154px;*/
+    }
 
 </style>
-
+<script src="__CDN__/assets/layui/layui.js"></script>
 <link rel="stylesheet" href="__CDN__/assets/layui/css/layui.css"/>
+
+<link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <div id="content-container" class="container">
     <div class="row">
         <div class="col-md-12 breadcrumb-div">
@@ -301,15 +389,79 @@
         <div class="col-md-my-9">
             <div class="panel">
               <div class="panel-body">
-                    <h2 class="page-header">
-                        <span class="mytitle">管理账号</span>
-                        <a href="{:url('component/uploads')}" class="upload-g">管理列表</a>
-                    </h2>
+                    <div class="page-header-a">
+                        <div class="people">上海秒搭数字科技有限公司</div>
+                        <div href="{:url('component/uploads')}" class="people">{$people}人</div>
+                    </div>
                    
+                    <div class="c-ssk">
+                        <input type="text" name="title" placeholder="搜索部门、成员" class="ssk">
+                        <i class="layui-icon" style="margin-left: -250px ;margin-top:10px;">&#xe615;</i> 
+                    </div>
+
               </div>
+               <hr style="margin-top: 10px;">
                 <div class="widget am-cf" style="height: 500px">
+                    <!-- 按钮 -->
+                    <div class="anniu">
+                        <button  class="layui-btn" style="background-color: #ffff;color: #72D6E5;border: 1px solid #72D6E5;width: 106px;height:40px;
+                        font-weight: 500;font-size: 17px;margin-left: 22px;text-align: center;">分发账号</button>
+                        <button  class="layui-btn" style="background-color: #ffff;color: #979797;border: 1px solid #979797;width: 106px;height:40px;
+                        font-weight: 500;font-size: 17px;margin-left: 60px">批量操作</button>
+                        <button  id="item_delete" class="layui-btn" style="background-color: #ffff;color: #979797;border: 1px solid #979797;width: 72px;height:40px;
+                        font-weight: 500;font-size: 17px;margin-left: 20px">删除</button>
+                        <button  class="layui-btn" style="background-color: #ffff;color: #979797;border: 1px solid #979797;width: 106px;height:40px;
+                        font-weight: 500;font-size: 17px;margin-left: 20px;">微信邀请</button>
+                    </div>
+                    <!-- 下拉框 -->
+                    <div class="layui-inline">
+                        <select name="category_id" class="xl">
+                            <option value="" name="category_id" class="classify-a">选择身份</option>
+                            <option value="" id="en" name="category_id" class="classify">?</option>
+                        </select>
+                    </div>
+                    <!-- 列表 -->
+                    <div class="line">
+                        <!-- 全选 -->
+                       
+                        <div class="layui-form-item-a">
 
+                           
+                              <!--全选-->
+                              <input type="checkbox" id="all" class="parent_check">
 
+                        </div>
+                         <!-- 单选 -->
+  
+
+                        <ul>
+                            <li class="name">姓名</li>
+                            <li class="title-a">部门</li>
+                            <li class="title-a">手机号</li>
+                            <li class="title-a">登录身份</li>
+                            <li class="title-a">登录时间</li>
+                        </ul>
+                    </div>
+                     <!-- 列表2 -->
+                    {foreach $admin_account as $v}
+                    <div class="line sx" data-id="{$v.id}" >
+                        <!-- 单选 -->
+                            <div class="dataBox" style="float: left;margin-left: 22px;margin-top: 8.5px">
+                              <ul >
+                                <li >
+                                  <input value="{$v.id}" type="checkbox" id="checkbox_1" class="son_check">
+                                </li>
+                              </ul>
+                            </div>
+                        <ul>
+                            <li class="name-a">{$v.name}</li>
+                            <li class="title-b">部门</li>
+                            <li class="title-b" style="width: 260px">{$v.cellphone}</li>
+                            <li class="title-b" style="width: 150px">{$v.identity}</li>
+                            <li class="title-b" style="width: 150px;margin-left:85px; ">{$v.create_time}</li>
+                        </ul>
+                    </div>
+                    {/foreach}
                 </div>   
             </div>
         </div>
@@ -317,7 +469,111 @@
 </div>
 <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
-<script src="__CDN__/assets/layui/layui.js"></script>
+<!-- 全选单选 -->
+<script type="text/javascript">   
+$(function () {
+    //全局的checkbox选中和未选中的样式
+    $parentChexbox = $('.parent_check'), //全选
+    $dataBox = $('.dataBox'),            //用于判断全局与子类的关系
+    $sonCheckBox = $('.son_check'); //单个子类选中     
+    $sx = $('.sx'); 
+    //全局全选与单个的关系
+    $parentChexbox.click(function () {
+        var $checkboxs = $dataBox.find('input[type="checkbox"]');
+        if ($(this).is(':checked')) {
+            $checkboxs.prop("checked", true);
+        } else {
+            $checkboxs.prop("checked", false);
+        }
+    });
+    
+    $sonCheckBox.each(function () {
+        $(this).click(function () {
+            if ($(this).is(':checked')) {
+                //判断：所有单个是否勾选
+                var len = $sonCheckBox.length;
+                var num = 0;
+                $sonCheckBox.each(function () {
+                    if ($(this).is(':checked')) {
+                        num++;
+                    }
+                });
+                if (num == len) {
+                    $parentChexbox.prop("checked", true);
+                }
+            } else {
+                //单个取消勾选，全局全选取消勾选
+                $parentChexbox.prop("checked", false);
+            }
+        })
+       
+    })
+    
+      $('#item_delete').click(function () {
+           var data=[]; 
+              $sonCheckBox.each(function () {
+                     if ($(this).is(':checked')) {
+                       data.push($(this).val())
+                      };  
+                 })
+              var id=JSON.stringify( data );
+                 for (var i = 0; i <=data.length-1 ; i++) {
+                     if(i==0){
+                        id=data[0]
+                     } else{
+                        id=id+','+data[i]
+                     }
+                 }
+                
+                $.post("{:url('del')}"
+                     , {
+                        fa_admin_account_id: id,
+                    }
+                    , function (result) {
+                            if(result.status == 200){
+                                  // 删除之后自动刷新局部
+                                $sx.each(function (){
+                                    var sid=$(this).data('id')
+                                    // console.log(sid)
+                                    for(var i = 0; i < data.length; i++){
+                                        // console.log(data[i])
+                                           if(sid == data[i]){
+                                               $(this).remove()
+                                            }
+                                      }
+                                }) 
+
+                            }else{
+                            
+                            }
+                        });
+        //     layer.confirm('确定要删除该商品吗？'
+        //         , {title: '友情提示'}
+        //         , function (index) {
+        //             $.post("{:url('del')}"
+        //                 , {
+        //                     fa_admin_account_id: data,
+        //                 }
+        //                 , function (result) {
+                           
+        //                     // if(result.status == 200){
+        //                     //     // $.show_success(result.msg, result.url
+        //                     // }else{
+        //                     //     // $.show_error(result.msg)
+        //                     // }
+        //                 });
+        //             layer.close(index);
+        //         }
+        //      );
+
+        });
+
+});
+
+</script>
+
+<!-- 删除 -->
+
 
                    
                    
@@ -329,3 +585,4 @@
                        
                        
 
+ 

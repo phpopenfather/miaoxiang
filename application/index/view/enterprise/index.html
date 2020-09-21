@@ -1,0 +1,541 @@
+<style>
+    .basicinfo {
+        margin: 15px 0;
+    }
+
+    .basicinfo .row > .col-xs-4 {
+        padding-right: 0;
+    }
+
+    .basicinfo .row > div {
+        margin: 5px 0;
+    }
+
+    .container{
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .sidenav{
+        border: none;
+    }
+    .panel-default{
+        border: none;
+    }
+    .mytitle{
+        font-size: 18px;
+        color: #3A3C3C;
+        font-family: pingfang;
+    }
+    .upload-g{
+        color: #899294;
+        font-size: 16px;
+        margin-left: 13px;
+    }
+    .upload-g:hover{
+        color: #899294;
+    }
+    .panel-body{
+        padding: 15px 0;
+    }
+    .page-header{
+        padding-left: 23px;
+        margin-top: 12px !important;
+        margin-bottom: 2px !important;
+        padding-bottom: 28px !important;
+        border-bottom: 2px solid #F5F5F5;
+        float: left;
+    }
+    .list-nav{
+        padding: 0 10px;
+    }
+    .list-nav>li{
+        float: left;
+        margin-left: 5px;
+    }
+    .list-nav>li>a{
+        color: #202020 !important;
+        font-size: 16px;
+        background: none !important;
+        transition: all 0.3s ease;
+        padding: 13px 8px 6px;
+        margin: 0 9px;
+        border-top: none;
+        border-radius: unset !important;
+    }
+    .nav-span{
+        float: right;
+        position: relative;
+        z-index: 1;
+        color: #fff;
+        font-size: 14px;
+        background: #E3E3E3;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        vertical-align: bottom;
+        margin: 13px 7px 0 0 ;
+    }
+    .nav-span:hover{
+        background: #72D6E5;
+    }
+    .nav-span:hover .select-span{
+        display: block;
+    }
+    .nav-bg{
+        background: #72D6E5;
+    }
+    .img-div{
+        width: 239px;
+        height: 239px;
+        max-height: 239px;
+        text-align: center;
+        position: relative;
+        display: table-cell;
+        vertical-align: bottom;
+        margin: 0 auto;
+    }
+    .img-div a img{
+        background: #ccc;
+        display: block;
+        margin: 0 auto;
+        max-height: 239px;
+    }
+    .nav-text{
+        display: inline-block;
+        padding: 6px 20px;
+    }
+    .select-span{
+        position: absolute;
+        width: 100%;
+        background: #0a6aa1;
+        display: inline-block;
+        left: 0;
+        display: none;
+        top: 32px;
+        background: #fff;
+        padding: 4px 0;
+        box-shadow: rgba(0,0,0,.1) 0px 0px 1px;
+    }
+    .select-span a{
+        color: #868F91;
+        font-size: 16px;
+        display: block;
+        transition: all 0.3s ease;
+        text-align: center;
+        padding: 5px 0;
+    }
+    .select-span a:hover{
+        color: #72D6E5;
+    }
+    .nav-pills > li.active > a{
+        border-bottom: 4px solid #72D6E5;
+    }
+    .tab-content{
+        padding: 0 15px;
+    }
+    .list-content{
+        margin-top: 14px;
+        padding: 0 23.988px;
+    }
+    .list-item{
+        padding: 0 8px;
+    }
+    .item-div{
+        position: relative;
+        max-width: 100%;
+        width: 100%;
+        transition:all .3s;
+    }
+    .item-div:hover{
+        box-shadow: rgba(0,0,0,.2) 0px 0px 4px;
+    }
+    .checkbox-div{
+        position: absolute;
+        width: 22px;
+        height: 22px;
+        cursor: pointer;
+        right: 11px;
+        border-radius: 20px;
+        top: 12px;
+        z-index: 1;
+        opacity: 0;
+        background: #fff;
+        background-position: center center;
+        background-repeat: no-repeat;
+        transition: all 0.3s ease;
+        box-shadow: rgba(0,0,0,.2) 0px 0px 3px;
+    }
+    .checkbox-click{
+        opacity: 1;
+    }
+    .checkbox-bg{
+        background-image: url("/assets/img/yes.png");
+    }
+    .checkbox-div input{
+        width: 22px;
+        height: 22px;
+        cursor: pointer;
+        opacity: 0;
+        margin-top: 0;
+        z-index: 8;
+    }
+    .item-div:hover .checkbox-div{
+        /*display: block;*/
+        /*opacity: 1;*/
+    }
+    .ul-list{
+        border: 1px solid #E5E5E5;
+        padding: 5px 0 5px;
+     }
+    .ul-list li{
+        text-align: center;
+        color: #8F8E96;
+        font-size: 12px;
+        border: none;
+        padding: 4px 15px;
+    }
+    .item-title a{
+        color: #000;
+        font-size: 14px;
+    }
+    .last-li{
+        padding-top: 3px !important;
+    }
+    .last-li .star{
+        vertical-align: top;
+        margin-right: 5px;
+    }
+
+    .page{
+        text-align: right;
+        padding-right: 10px;
+    }
+    
+
+    @media (min-width: 992px){
+        .col-md-my-3 {
+            width: 19.324%;
+            float: left;
+            position: relative;
+            min-height: 1px;
+            padding-left: 15px;
+        }
+        .col-md-my-9{
+            width: 80.676%;
+            float: left;
+            padding-left: 18px;
+            padding-right: 15px;
+        }
+    }
+
+    .col-md-my-9{
+                width: 80.676%;
+                float: left;
+                padding-left: 18px;
+                padding-right: 15px;
+            }
+   
+   .widget am-cf{
+    width: 735px;
+    height: 755px;
+
+   }
+/*   .form-item-a{
+    width: 735px;
+    height: 755px;
+
+   }*/
+
+   .hi{
+    width: 195px;
+    height: 26px;
+    margin-left: 25px;
+    margin-top: 25px;
+    font-size: 18px;
+
+   }
+   .floor{
+    width: 148px;
+    height:  127px;
+    margin-left:386px;
+    margin-top: 150px;
+   }
+   .zu{
+    width: 197px;
+    height: 21px;
+    /*border: 1px solid red;*/
+    margin-left: 377px;
+    margin-top: 35px;
+    color: #9B9B9B;
+    font-size: 14px;
+    font-weight:600;
+   }
+   .qy-top{
+    width: 675px;
+    height: 300px;
+
+   }
+   .icon-a{
+    width: 290px;
+    height: 65px;
+    margin-left: 190px;
+    margin-top: 40px;
+   }
+   .tixt-a{
+    width: 300px;
+    height: 25px;
+    /*border: 1px solid red;*/
+    margin-top: 28px;
+    margin-left: 160px;
+   }
+    .tixt-b{
+    width: 300px;
+    height: 20px;
+    /*border: 1px solid red;*/
+    margin-top: 9px;
+    margin-left: 170px;
+   }
+    .tixt-c{
+    width: 300px;
+    height: 20px;
+    /*border: 1px solid red;*/
+    margin-top: 9px;
+    margin-left: 180px;
+   }
+
+   /*中间*/
+   .qy-middle{
+    width: 675px;
+    height: 200px;
+
+   }
+   .middle-top{
+    width: 43px;
+    height: 21px;
+    margin-left:25px;
+    margin-top: 20px;
+    color: #BEC8CA;
+    font-size: 13px; 
+   }
+   .middle-down{
+    width: 320px;
+    height: 95px;
+ 
+    margin-left: 20px;
+    margin-top: 20px;
+    float: left;
+   }
+   .middle-right{
+    width: 110px;
+    height: 26px;
+
+    margin-left: 520px;
+    margin-top: 20px;
+    color:#72D6E5 ;
+    font-size:18px;
+   }
+
+   /*左下*/
+   .qy-down{
+     width: 675px;
+    height: 300px;
+
+   }
+   .down-top{
+    width: 110px;
+    height: 26px;
+    font-size: 18px; 
+    color:#3A3C3C ;
+    margin-left: 25px;
+    margin-top: 25px;
+   }
+   .down-middle-text{
+    width: 600px;
+    height: 25px;
+    margin-top:40px;
+   }
+   .qyzrs{
+    float: left;
+    margin-left: 98px;
+    font-size: 16px; 
+    color: #868F91;
+
+   }
+   .qy-number{
+    width: 600px;
+    height: 35px;
+    margin-top:40px;
+   }
+   .qy-number-numb{
+    width: 50px;
+    float: left;
+    margin-left: 100px;
+    font-size: 32px; 
+    color: #72D6E5;
+
+   }
+   .down-down{
+    width: 240px;
+    height: 25px;
+    font-size: 14px;
+    color: #868F91;
+    margin-left: 30px;
+    margin-top: 35px;
+   }
+   .qy-right{
+    width: 320px;
+    height: 800px;
+    /*border: 1px solid red;*/
+    margin-left: 675px;
+    margin-top: 60px;
+   }
+   .qy-right-middle{
+    margin-top: 60px;
+    width: 320px;
+    height: 220px;
+    border: 1px solid #ffff;
+   }
+   
+
+</style>
+<script src="__CDN__/assets/layui/layui.js"></script>
+<link rel="stylesheet" href="__CDN__/assets/layui/css/layui.css"/>
+
+<link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<div id="content-container" class="container">
+    <div class="row">
+        <div class="col-md-12 breadcrumb-div">
+            <ul class="breadcrumb">
+                <li><a class="breadcrumb-a-xm" href="">我的构件</a></li>
+                <li class="active">构件列表</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-my-3">
+            {include file="common/public" /}
+        </div>
+        <div class="col-md-my-9">
+            <div class="panel">
+              <div class="panel-body" style="width: 1040px; height: 880px;">
+                <div class="qy-left" style="float: left;">
+                    <div class="qy-top">
+                        <div class="hi">
+                          hi，尹秀英欢迎来到秒象
+                        </div> 
+                        <div class="icon-a">
+                            <i class="layui-icon" style="font-size: 60px; color: #868F91;">&#xe66f;</i>
+                            <i class="layui-icon" style="font-size: 60px; color: #868F91; margin-left: 125px;">&#xe615;</i>    
+                        </div> 
+                        <div class="tixt-a">
+                           <p style="font-size: 18px; color: #3A3C3C;float: left;font-weight:530;">企业管理员账号</p> 
+                           <p style="font-size: 18px; color: #3A3C3C;margin-left: 225px;">探索秒象</p>
+                        </div>
+                        <div class="tixt-b">
+                            <p style="font-size: 14px; color: #3A3C3C;float: left;font-weight:530;">完善企业通讯录</p> 
+                            <p style="font-size: 14px; color: #3A3C3C;margin-left: 210px;">查看企业官网</p>
+                        </div>
+                        <div class="tixt-c">
+                            <p style="font-size: 15px; color: #72D6E5;float: left;font-weight:530;">立即添加></p> 
+                            <p style="font-size: 15px; color: #72D6E5;margin-left: 210px;">前往查看></p>
+                        </div>
+                    </div> 
+                    <hr style="margin-top: 1px">
+                    <div class="qy-middle">
+                        <div class="middle-top">
+                            新消息
+                        </div>
+                        <div class="middle-down">
+                        <p style="font-size: 18px; color: #3A3C3C;text-align: center;">15012345678账户刚刚登录了秒象软件</p>
+                        <p style="font-size: 18px; color: #3A3C3C;text-align: center;">15012345678账户刚刚登录了秒象软件</p>
+                        <p style="font-size: 18px; color: #3A3C3C;text-align: center;">15012345678账户刚刚登录了秒象软件</p>
+                        </div> 
+                        <div class="middle-right">
+                            进入管理账号
+                        </div>  
+                    </div>
+                    <hr style="margin-top: 1px">
+                    <div class="qy-down">
+                        <div class="down-top">
+                            分发账号数量
+                        </div>
+                        <div class="down-middle">
+
+                            <div class="down-middle-text">
+                                <p class="qyzrs"> 企业总人数</p>
+                                <p class="qyzrs"> 上周登录用户</p>
+                               <p class="qyzrs"> 最近新增用户</p>
+                            </div>
+                            <div class="qy-number">
+                               <p class="qy-number-numb" style="margin-left: 112px;"> 10</p>
+                               <p class="qy-number-numb" style="margin-left: 138px;"> 10</p>
+                               <p class="qy-number-numb" style="margin-left: 140px;"> 10</p>
+                            </div>
+                        </div>
+                        <div class="down-down">
+                            统计截止时间：2020年8月24日16:24
+                        </div>
+                    </div>  
+                </div> 
+                <!-- 中间线 -->
+                 <div style="float:left;width: 1px;height: 800px; border: 1px solid #E8E8E8 "></div>
+                 <div class="qy-right">
+                     <div class="qy-right-top">
+                         <img src="/assets/img/logo@1x.png" style="margin-left: 90px">   
+                         <p style="font-size: 18px;margin-left:50px;margin-top: 45px;">上海秒搭数字科技有限公司</p>
+                         <div style="margin-top: 50px; width: 300px;height: 26px;">
+                         <p style="float: left; font-size: 18px;margin-left:30px;">容量：</p>
+                         <p style="float: left; font-size: 18px;margin-left:1px; color: #72D6E5">2GB</p>
+                         <p style="float: left; font-size: 18px;margin-left:5px;">申请扩容</p>
+                         </div>
+                         <div style="margin-top: 20px;width: 300px;height: 26px;\">
+                         <p style="float: left; font-size: 18px;margin-left:30px;">已使用：</p>
+                         <p style="float: left; font-size: 18px;margin-left:1px; color: #72D6E5">1556MB</p>
+                         </div>
+                         <div style="margin-top: 20px;width: 300px;height: 26px;\">
+                         <p style="float: left; font-size: 18px;margin-left:30px;">未使用：</p>
+                         <p style="float: left; font-size: 18px;margin-left:1px; color: #72D6E5">492MB</p>
+                         </div>
+                     </div>
+                    <div style="float:left;width: 315px;height: 1px; border: 1px solid #E8E8E8 ;margin-top: 20px">
+                     
+                 </div>
+                     <div class="qy-right-middle">
+                        <a href="" class="layui-btn" style="background-color: #72D6E5;color: #ffff;width: 100px;height:40px;font-weight:500; margin-top: 10px;margin-left: 30px;font-size: 16px;float: left;">企业版
+                        </a>
+                        <p style="color: #81DAE7;font-size: 16px;margin-top: 20px;margin-left: 145px;">申请专属大客户专员</p>
+                        <p style="font-size: 16px;margin-top: 30px;margin-left: 35px;">大客户专员：miaoxaing.co</p>
+                        <p style="font-size: 16px;margin-top: 10px;margin-left: 35px;">联系方式：198 xxxx xxxx</p>
+                     </div>
+                      <div style="float:left;width: 315px;height: 1px; border: 1px solid #E8E8E8 ;margin-top: -30px">
+                     <div class="qy-right-down">
+                         <p style="font-size: 16px;margin-top: 40px;margin-left: 30px;">当前身份</p>
+                         <p style="font-size: 16px;margin-top: 20px;margin-left: 30px;">企业大管理员</p>
+                     </div>
+                 </div>   
+              </div>
+              
+                  
+            </div>
+        </div>
+    </div>
+</div>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
+<!-- 全选单选 -->
+<script type="text/javascript">   
+
+
+
+                   
+                   
+                  
+                  
+
+                       
+                        
+                       
+                       
+
+ 
