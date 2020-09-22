@@ -395,7 +395,7 @@
                     </div>
                    
                     <div class="c-ssk">
-                        <input type="text" name="title" placeholder="搜索部门、成员" class="ssk">
+                        <input type="text" id="txtSearch" name="title" placeholder="搜索部门、成员" class="ssk">
                         <i class="layui-icon" style="margin-left: -250px ;margin-top:10px;">&#xe615;</i> 
                     </div>
 
@@ -404,9 +404,9 @@
                 <div class="widget am-cf" style="height: 500px">
                     <!-- 按钮 -->
                     <div class="anniu">
-                        <button  class="layui-btn" style="background-color: #ffff;color: #72D6E5;border: 1px solid #72D6E5;width: 106px;height:40px;
-                        font-weight: 500;font-size: 17px;margin-left: 22px;text-align: center;">分发账号</button>
-                        <button  class="layui-btn" style="background-color: #ffff;color: #979797;border: 1px solid #979797;width: 106px;height:40px;
+                        <a href="{:url('admin/add')}"  class="layui-btn" style="background-color: #ffff;color: #72D6E5;border: 1px solid #72D6E5;width: 106px;height:40px;
+                        font-weight: 500;font-size: 17px;margin-left: 22px;text-align: center;">分发账号</a>
+                        <button  class="layui-btn parent_check" style="background-color: #ffff;color: #979797;border: 1px solid #979797;width: 106px;height:40px;
                         font-weight: 500;font-size: 17px;margin-left: 60px">批量操作</button>
                         <button  id="item_delete" class="layui-btn" style="background-color: #ffff;color: #979797;border: 1px solid #979797;width: 72px;height:40px;
                         font-weight: 500;font-size: 17px;margin-left: 20px">删除</button>
@@ -415,9 +415,13 @@
                     </div>
                     <!-- 下拉框 -->
                     <div class="layui-inline">
-                        <select name="category_id" class="xl">
+                        <select id="fenlei" name="category_id" class="xl">
                             <option value="" name="category_id" class="classify-a">选择身份</option>
-                            <option value="" id="en" name="category_id" class="classify">?</option>
+                            <option value="企业" id="identity" name="category_id" class="classify">企业</option>
+                            <option value="设计师" id="identity" name="category_id" class="classify">设计师</option>
+                            <option value="销售员" id="identity" name="category_id" class="classify">销售员</option>
+                            <option value="工厂" id="identity" name="category_id" class="classify">工厂</option>
+                            <option value="管理员" id="identity" name="category_id" class="classify">管理员</option>
                         </select>
                     </div>
                     <!-- 列表 -->
@@ -455,7 +459,7 @@
                             </div>
                         <ul>
                             <li class="name-a">{$v.name}</li>
-                            <li class="title-b">部门</li>
+                            <li class="title-b">{$v.department}</li>
                             <li class="title-b" style="width: 260px">{$v.cellphone}</li>
                             <li class="title-b" style="width: 150px">{$v.identity}</li>
                             <li class="title-b" style="width: 150px;margin-left:85px; ">{$v.create_time}</li>
@@ -469,6 +473,62 @@
 </div>
 <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
+<!-- 分类展示 -->
+<script type="text/javascript">
+$(function(){
+  $("#fenlei").change(function(){
+    var data=$(this).val();  //获取点击目标的数据
+    // console.log(data)
+     // $.post("{:url('index')}"
+     //                 , {
+     //                    fenlei: id,
+     //                }
+     //                , function (result) {
+     //                        if(result.status == 200){
+
+     //                        }else{
+                            
+     //                        }
+     //                    });
+
+    });
+})
+
+
+
+
+$(function () {
+
+        // 删除元素
+        $('.item-delete').click(function(){
+
+            var data = $(this).data();
+            layer.confirm('确定要删除该商品吗？'
+                , {title: '友情提示'}
+                , function (index) {
+                    $.post("{:url('del')}"
+                        , {
+                            category_id: data.id
+                        }
+                        , function (result) {
+                           
+                            if(result.status == 200){
+                                $.show_success(result.msg, result.url)
+                            }else{
+                                $.show_error(result.msg)
+                            }
+                        });
+                    layer.close(index);
+                }
+                );
+            //阻止a标签跳转
+            return false
+        })
+
+    });
+</script>
+
+
 <!-- 全选单选 -->
 <script type="text/javascript">   
 $(function () {

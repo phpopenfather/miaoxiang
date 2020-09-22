@@ -13,7 +13,7 @@ use think\Reques;
 use think\Validate;//引用验证器
 use think\facade\Request;
 /**
- * 管理账号
+ * 首页
  */
 class Enterprise extends Frontend
 {
@@ -23,6 +23,11 @@ class Enterprise extends Frontend
 	*/
 	// 列表
 	public function index(){
+      return $this->view->fetch();
+    }
+
+
+    	public function add(){
       return $this->view->fetch();
     }
 }
