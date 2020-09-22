@@ -27,7 +27,16 @@ class Admin extends Frontend
       $people=Db::name('admin_account')
       ->where('is_delete',1)
       ->count();
+
+    // 搜索
       
+
+      
+      //分类查询
+    $identity=input('identity');
+    // var_dump($identity);die;
+     
+
       // 查询数据表
       $admin_account=Db::name('admin_account')
       ->where('is_delete',1)->select();
@@ -116,7 +125,14 @@ class Admin extends Frontend
         // var_dump($del);die;
          return json(['status'=>200,]);
     }
+
+
+
+
+ 
 }
+
+
 
 
 

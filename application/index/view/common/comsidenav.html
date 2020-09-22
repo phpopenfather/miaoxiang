@@ -101,7 +101,14 @@
     {:hook('component_sidenav_before')}
     <ul class="list-group">
         <li class="list-group-heading"><img src="/assets/img/logo_sm.png">&bull;<span>企业中心</span></li>
-        <li class="nav-item nav-item1"> <a href="{:url('enterprise/index')}"><i class="icon"></i> <span>首页</span></a> </li>
+        <li class="nav-item nav-item1">
+           <a href="javascript:;"><i class="icon"></i> <span>首页</span></a>
+                <ul>
+                    <li><a href="{:url('enterprise/index')}"><i class="item-icon item-icon1"></i> <span>企业管理中心</span></a></li>
+                    <li><a href="{:url('enterprise/add')}"><i class="item-icon item-icon1"></i> <span>完善企业信息</span></a></li>
+        
+                </ul>
+         </li>
 <!--        <li class="list-group-item {:$config['actionname']=='upload'?'active':''}"> <a href="{:url('component/upload')}"><i class="fa fa-user-circle fa-fw"></i> {:__('Upload component')}</a> </li>-->
         <li class="nav-item nav-item2">
             <a href="javascript:;"><i class="icon"></i> <span>管理账号</span><i class="fa fa-angle-up nav-more"></i></a>
@@ -113,8 +120,9 @@
         <li class="nav-item nav-item3">
             <a href="javascript:;"><i class="icon"></i> <span>企业信息</span><i class="fa fa-angle-up nav-more"></i></a>
             <ul class="item-ul">
-                <li><a href="javascript:;"><i class="item-icon item-icon1"></i> <span>企业认证</span></a></li>
-                <li><a href="javascript:;"><i class="item-icon item-icon2"></i> <span>基本资料</span></a></li>
+                <li><a href="{:url('enterinformation/informationadd')}"><i class="item-icon item-icon1"></i> <span>企业信息添加</span></a></li>
+                <li><a href="{:url('enterinformation/dataadd')}"><i class="item-icon item-icon1"></i> <span>基本资料</span></a></li>
+                <li><a href="{:url('enterinformation/authenticationadd')}"><i class="item-icon item-icon2"></i> <span>企业认证</span></a></li>
             </ul>
         </li>
         <li class="nav-item nav-item4 {:$config['actionname']=='mylist'?'nav-show':''}">
