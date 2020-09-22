@@ -201,9 +201,6 @@ class Component extends Frontend
 
 
     public function enterprise(){
-
-        
-
          $this->view->assign('title', __('enterprise component'));
          return $this->view->fetch();
 
