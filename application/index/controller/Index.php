@@ -13,6 +13,7 @@ class Index extends Frontend
 
     public function index()
     {
+//        echo $this->request->domain();die;
         return $this->view->fetch();
     }
 
