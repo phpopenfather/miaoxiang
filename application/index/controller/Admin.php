@@ -23,13 +23,25 @@ class Admin extends Frontend
 	*/
 	// 列表
 	public function index(){
-// $this->view->assign('title', __('index component'));
-    return $this->view->fetch();
+      //查询人数
+      $people=Db::name('admin_account')
+      ->where('is_delete',1)
+      ->count();
+      
+      // 查询数据表
+      $admin_account=Db::name('admin_account')
+      ->where('is_delete',1)->select();
+
+
+       $this->assign('people',$people);
+       $this->assign('admin_account',$admin_account);
+    return $this->view->fetch('admin/index');
 	}
 
 
     // 添加
 	public function add(){
+
         // var_dump($_POST);die;
             // user_id
             $token = $this->request->post('__token__');
@@ -54,8 +66,9 @@ class Admin extends Frontend
             'sex'=>input('sex'),
             'address'=>input('address'),
             'identity'=>input('identity'),
-            'create_time'=>date('Y-m-d',time()),
-            'user_id'=>$user_id
+            'create_time'=>date('Y-m-d h:m:i',time()),
+            'user_id'=>$user_id,
+            'is_delete'=>1
 
 
         ];
@@ -88,6 +101,20 @@ class Admin extends Frontend
           }
        
         return $this->view->fetch();
+    }
+
+
+    // 删除
+    public function del(){
+        
+        // var_dump(input('fa_admin_account_id')); die;
+       $id = input('fa_admin_account_id');
+      
+        $del=DB::name('admin_account')
+        ->where('id','in',$id)
+        ->update(['is_delete' => 0]);
+        // var_dump($del);die;
+         return json(['status'=>200,]);
     }
 }
 
